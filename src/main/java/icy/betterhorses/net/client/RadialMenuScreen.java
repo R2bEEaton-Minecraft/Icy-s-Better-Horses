@@ -5,9 +5,8 @@ import icy.betterhorses.net.IHorseData;
 import icy.betterhorses.net.network.RadialCommandPayload;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
@@ -86,7 +85,7 @@ public class RadialMenuScreen extends Screen {
     }
 
     @Override
-    public void extractRenderState(GuiGraphicsExtractor gfx, int mouseX, int mouseY, float delta) {
+    public void render(GuiGraphics gfx, int mouseX, int mouseY, float delta) {
         if (minecraft == null || minecraft.level == null || minecraft.level.getEntity(horseId) == null) {
             onClose();
             return;
@@ -105,7 +104,7 @@ public class RadialMenuScreen extends Screen {
         hover.beginFrame(HOVER_TAU);
 
         var pose = gfx.pose();
-        pose.pushMatrix();
+        pose.pushPose();
         BhAnim.enter(pose, BhAnim.easeOutBack(t), cx, cy, 0f, 0.85f);
 
         BhVector.Builder mesh = new BhVector.Builder();
@@ -143,10 +142,10 @@ public class RadialMenuScreen extends Screen {
             int ly = cy + Math.round((float) Math.sin(labelAngle) * labelRadius);
             String text = Component.translatable(commandKey(this.commands[i])).getString();
             int textColor = bh_mixColor(LABEL_COLOR, LABEL_HOVER_COLOR, hoverAmount[i]);
-            gfx.centeredText(font, text, lx, ly - font.lineHeight / 2, textColor);
+            gfx.drawCenteredString(font, text, lx, ly - font.lineHeight / 2, textColor);
         }
 
-        pose.popMatrix();
+        pose.popPose();
     }
 
     private static int bh_mixColor(int from, int to, float k) {
@@ -169,10 +168,10 @@ public class RadialMenuScreen extends Screen {
     }
 
     @Override
-    public boolean mouseReleased(MouseButtonEvent event) {
-        if (event.button() == 0) {
-            double dx = event.x() - width / 2.0;
-            double dy = event.y() - height / 2.0;
+    public boolean mouseReleased(double mouseX, double mouseY, int button) {
+        if (button == 0) {
+            double dx = mouseX - width / 2.0;
+            double dy = mouseY - height / 2.0;
             double dist = Math.sqrt(dx * dx + dy * dy);
             if (dist >= RING_INNER && dist <= RING_OUTER) {
                 sendCommand(this.commands[bh_angleToIndex(Math.atan2(dy, dx))]);
@@ -180,7 +179,7 @@ public class RadialMenuScreen extends Screen {
             onClose();
             return true;
         }
-        return super.mouseReleased(event);
+        return super.mouseReleased(mouseX, mouseY, button);
     }
 
     private void sendCommand(HorseCommand command) {
