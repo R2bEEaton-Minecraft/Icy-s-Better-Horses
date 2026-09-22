@@ -7,7 +7,7 @@ import software.bernie.geckolib.model.GeoModel;
 public final class MediumStabilizerGeoModel extends GeoModel<HorseStabilizerAnimatable> {
 
     private static final ResourceLocation MODEL =
-            ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.RESOURCE_NAMESPACE, "geo/st_medium.geo.json");
+            ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.RESOURCE_NAMESPACE, "geckolib/models/st_medium.geo.json");
     private static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(
             IcysBetterHorses.RESOURCE_NAMESPACE, "textures/entity/horse/medium/stabilizer.png");
     private static final ResourceLocation ANIMATION =
@@ -28,5 +28,4 @@ public final class MediumStabilizerGeoModel extends GeoModel<HorseStabilizerAnim
         return ANIMATION;
     }
 }
-
 
