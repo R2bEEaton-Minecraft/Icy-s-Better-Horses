@@ -36,6 +36,12 @@ public final class ModItems {
     public static final Item WHEEL = register("wheel",
             new Item(itemProperties("wheel")));
 
+    // Model-only anchor: never given to players. Modonomicon resolves the Stable Handbook's
+    // inventory icon by looking up this item id's baked model at render time, so the item
+    // must be registered even though the book itself is the generic modonomicon book item.
+    public static final Item STABLE_HANDBOOK_BOOK_MODEL = register("stable_handbook_book",
+            new Item(itemProperties("stable_handbook_book")));
+
     public static final Item ICELANDIC_HORSE_SPAWN_EGG = register("icelandic_horse_spawn_egg",
             new SpawnEggItem(ModEntities.ICELANDIC_HORSE, 0xB49A80, 0xEEE3D1, itemProperties("icelandic_horse_spawn_egg")));
 
