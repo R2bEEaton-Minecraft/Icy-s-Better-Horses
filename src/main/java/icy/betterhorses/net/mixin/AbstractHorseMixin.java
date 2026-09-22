@@ -418,7 +418,7 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
     @Override
     public boolean bh_hasUpgradedSaddle() {
         AbstractHorse self = (AbstractHorse) (Object) this;
-        return self.getItemBySlot(EquipmentSlot.SADDLE).is(ModItems.UPGRADED_SADDLE);
+        return self.isSaddled() && this.inventory.getItem(0).is(ModItems.UPGRADED_SADDLE);
     }
 
     @Override
@@ -529,7 +529,7 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
         if (bh_cartChestContainer != null) {
             BhHorseStorage.dropContainerContents(self, serverLevel, bh_cartChestContainer);
         }
-        self.spawnAtLocation(serverLevel, new ItemStack(Items.CHEST));
+        self.spawnAtLocation(new ItemStack(Items.CHEST));
     }
 
     @Override
@@ -556,13 +556,13 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
         }
         ItemStack hoe = bh_cartPlow;
         bh_setCartPlough(ItemStack.EMPTY);
-        self.spawnAtLocation(serverLevel, hoe);
+        self.spawnAtLocation(hoe);
     }
 
     @Override
     public boolean bh_hasAnyEquipment() {
         AbstractHorse self = (AbstractHorse) (Object) this;
-        if (!self.getItemBySlot(EquipmentSlot.SADDLE).isEmpty()
+        if (self.isSaddled()
                 || !self.getItemBySlot(EquipmentSlot.BODY).isEmpty()) {
             return true;
         }
@@ -916,9 +916,8 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
         cir.setReturnValue(BhGears.riddenSpeed(bh_gear, cir.getReturnValueF()));
     }
 
-    @Inject(method = "hurtServer", at = @At("RETURN"))
+    @Inject(method = "hurt", at = @At("RETURN"))
     private void bh_neighWhenHurt(
-            ServerLevel level,
             DamageSource source,
             float amount,
             CallbackInfoReturnable<Boolean> cir) {
@@ -928,7 +927,7 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
                 || self.getRandom().nextFloat() >= BH_HURT_NEIGH_CHANCE) {
             return;
         }
-        level.playSound(null, self.getX(), self.getY(), self.getZ(),
+        self.level().playSound(null, self.getX(), self.getY(), self.getZ(),
                 ModSounds.HORSE_NEIGH, self.getSoundSource(), 1.0F, 1.0F);
     }
 
@@ -942,7 +941,7 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
             method = "aiStep",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/world/entity/animal/equine/AbstractHorse;"
+                    target = "Lnet/minecraft/world/entity/animal/horse/AbstractHorse;"
                             + "canEatGrass()Z"))
     private boolean bh_gateGrazing(AbstractHorse horse) {
         if (!horse.canEatGrass()) {
@@ -970,9 +969,8 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
         return command == HorseCommand.WANDER || command == HorseCommand.STAY;
     }
 
-    @Inject(method = "hurtServer", at = @At("RETURN"))
+    @Inject(method = "hurt", at = @At("RETURN"))
     private void bh_stopGrazingWhenHurt(
-            ServerLevel level,
             DamageSource source,
             float amount,
             CallbackInfoReturnable<Boolean> cir) {
@@ -1173,7 +1171,7 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
             self.playSound(SoundEvents.HORSE_LAND, 0.4F, 1.0F);
         }
 
-        int reducedDamage = this.calculateFallDamage(distance, damageMultiplier * BH_HOOVES_FALL_DAMAGE_MULTIPLIER);
+        int reducedDamage = this.calculateFallDamage((float) distance, (float) (damageMultiplier * BH_HOOVES_FALL_DAMAGE_MULTIPLIER));
         if (reducedDamage <= 0) {
             cir.setReturnValue(false);
             return;
@@ -1362,7 +1360,7 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
             method = "handleStartJump(I)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/world/entity/animal/equine/AbstractHorse;"
+                    target = "Lnet/minecraft/world/entity/animal/horse/AbstractHorse;"
                             + "standIfPossible()V"))
     private void bh_noRearOnStartJump(AbstractHorse horse) {
     }
@@ -1380,7 +1378,7 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
             method = "onPlayerJump(I)V",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/world/entity/animal/equine/AbstractHorse;"
+                    target = "Lnet/minecraft/world/entity/animal/horse/AbstractHorse;"
                             + "standIfPossible()V"))
     private void bh_noRearOnPlayerJump(AbstractHorse horse) {
     }

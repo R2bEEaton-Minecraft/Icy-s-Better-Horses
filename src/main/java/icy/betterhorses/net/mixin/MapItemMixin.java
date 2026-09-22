@@ -58,7 +58,7 @@ public abstract class MapItemMixin {
 
         boolean marked = false;
         BlockPos at = horse.blockPosition();
-        Registry<Structure> reg = level.registryAccess().lookupOrThrow(Registries.STRUCTURE);
+        Registry<Structure> reg = level.registryAccess().registryOrThrow(Registries.STRUCTURE);
         for (Structure s : level.structureManager().getAllStructuresAt(at).keySet()) {
             ResourceLocation id = reg.getKey(s);
             StructureStart start = level.structureManager().getStructureAt(at, s);

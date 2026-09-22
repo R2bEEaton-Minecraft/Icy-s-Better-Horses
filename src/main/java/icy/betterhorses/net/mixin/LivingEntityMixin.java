@@ -77,7 +77,7 @@ public abstract class LivingEntityMixin extends Entity {
             return;
         }
 
-        if (self.isInvulnerableTo(level, source) || !this.bh_hasEquippedMedkit(data)) {
+        if (self.isInvulnerableTo(source) || !this.bh_hasEquippedMedkit(data)) {
             return;
         }
 
@@ -132,8 +132,8 @@ public abstract class LivingEntityMixin extends Entity {
 
         int dur = BH_MEDKIT_EFFECT_DURATION * data.bh_getBreed().archetype().medkitMultiplier();
         self.addEffect(new MobEffectInstance(MobEffects.REGENERATION, dur, 0));
-        self.addEffect(new MobEffectInstance(MobEffects.INSTANT_HEALTH, 1, 0));
-        self.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, dur, 0));
+        self.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 0));
+        self.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, dur, 0));
         self.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, dur, 0));
     }
 }

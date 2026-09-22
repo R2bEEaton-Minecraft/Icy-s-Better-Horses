@@ -1,10 +1,8 @@
 package icy.betterhorses.net.item;
 
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
@@ -19,17 +17,12 @@ public class UpgradedSaddleItem extends Item {
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {
         if (!(target instanceof AbstractHorse horse)) return InteractionResult.PASS;
-        if (!horse.isTamed() || horse.isBaby() || !horse.canUseSlot(EquipmentSlot.SADDLE)) {
-            return InteractionResult.PASS;
-        }
-        if (!horse.getItemBySlot(EquipmentSlot.SADDLE).isEmpty()) {
+        if (!horse.isTamed() || horse.isBaby() || !horse.isSaddleable() || horse.isSaddled()) {
             return InteractionResult.PASS;
         }
 
         if (!player.level().isClientSide()) {
-            horse.setItemSlot(EquipmentSlot.SADDLE, stack.copyWithCount(1));
-            horse.level().playSound(null, horse.getX(), horse.getY(), horse.getZ(),
-                    SoundEvents.HORSE_SADDLE, SoundSource.NEUTRAL, 0.5F, 1.0F);
+            horse.equipSaddle(stack.copyWithCount(1), SoundSource.NEUTRAL);
             if (!player.getAbilities().instabuild) {
                 stack.shrink(1);
             }

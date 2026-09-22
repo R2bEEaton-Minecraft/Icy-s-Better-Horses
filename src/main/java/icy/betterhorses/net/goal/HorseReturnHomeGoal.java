@@ -130,7 +130,7 @@ public class HorseReturnHomeGoal extends Goal {
         if (!(horse.level() instanceof ServerLevel serverLevel)) return;
         ticketChunk = horse.chunkPosition();
         ticketRefreshCooldown = TICKET_REFRESH_INTERVAL_TICKS;
-        serverLevel.getChunkSource().addTicketWithRadius(ModTicketTypes.HORSE_TASK, ticketChunk, TICKET_RADIUS);
+        serverLevel.getChunkSource().addRegionTicket(ModTicketTypes.HORSE_TASK, ticketChunk, TICKET_RADIUS, ticketChunk);
     }
 
     private boolean checkStuck() {
@@ -154,7 +154,8 @@ public class HorseReturnHomeGoal extends Goal {
         BlockPos home = IHorseData.of(horse).bh_getHome();
         if (home == null) return;
         if (horse.level() instanceof ServerLevel serverLevel) {
-            serverLevel.getChunkSource().addTicketWithRadius(ModTicketTypes.HORSE_TASK, ChunkPos.containing(home), 1);
+            ChunkPos chunk = new ChunkPos(home);
+            serverLevel.getChunkSource().addRegionTicket(ModTicketTypes.HORSE_TASK, chunk, 1, chunk);
         }
         if (!icy.betterhorses.net.HorsePlacement.teleport(horse, home)) return;
         IHorseData.of(horse).bh_setCommand(HorseCommand.STAY);
