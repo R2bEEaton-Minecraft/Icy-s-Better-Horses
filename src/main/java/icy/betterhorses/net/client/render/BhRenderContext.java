@@ -1,15 +1,15 @@
 package icy.betterhorses.net.client.render;
 
-import net.minecraft.client.renderer.state.level.CameraRenderState;
+import net.minecraft.client.Camera;
 import org.jetbrains.annotations.Nullable;
 
 public final class BhRenderContext {
-    private static final ThreadLocal<CameraRenderState> CAMERA = new ThreadLocal<>();
+    private static final ThreadLocal<Camera> CAMERA = new ThreadLocal<>();
     private static final ThreadLocal<Float> OPACITY = ThreadLocal.withInitial(() -> 1.0F);
 
     private BhRenderContext() {}
 
-    public static void pushCamera(CameraRenderState camera) {
+    public static void pushCamera(Camera camera) {
         CAMERA.set(camera);
     }
 
@@ -17,7 +17,7 @@ public final class BhRenderContext {
         CAMERA.remove();
     }
 
-    public static @Nullable CameraRenderState currentCamera() {
+    public static @Nullable Camera currentCamera() {
         return CAMERA.get();
     }
 
