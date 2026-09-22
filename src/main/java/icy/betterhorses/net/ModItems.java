@@ -7,7 +7,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -121,7 +121,7 @@ public final class ModItems {
 
     public static final CreativeModeTab STABLE_SUPPLIES_TAB = Registry.register(
             BuiltInRegistries.CREATIVE_MODE_TAB,
-            Identifier.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, "stable_supplies"),
+            ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, "stable_supplies"),
             FabricCreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.icys-better-horses.stable_supplies"))
                     .icon(() -> new ItemStack(UPGRADED_SADDLE))
@@ -142,7 +142,7 @@ public final class ModItems {
 
     private static Item register(String path, Item item) {
         return Registry.register(BuiltInRegistries.ITEM,
-                Identifier.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, path),
+                ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, path),
                 item);
     }
 
@@ -153,7 +153,7 @@ public final class ModItems {
     private static ResourceKey<Item> itemKey(String path) {
         return ResourceKey.create(
                 Registries.ITEM,
-                Identifier.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, path));
+                ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, path));
     }
 
     private ModItems() {}

@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -25,8 +25,8 @@ public final class BhBreedLoader {
         ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(
                 new SimpleSynchronousResourceReloadListener() {
                     @Override
-                    public Identifier getFabricId() {
-                        return Identifier.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, "breeds");
+                    public ResourceLocation getFabricId() {
+                        return ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, "breeds");
                     }
 
                     @Override
@@ -38,10 +38,10 @@ public final class BhBreedLoader {
 
     private static void load(ResourceManager manager) {
         EnumMap<HorseBreed, BhBreedData> loaded = new EnumMap<>(HorseBreed.class);
-        Map<Identifier, Resource> found = manager.listResources(DIR, id -> id.getPath().endsWith(".json"));
+        Map<ResourceLocation, Resource> found = manager.listResources(DIR, id -> id.getPath().endsWith(".json"));
 
-        for (Map.Entry<Identifier, Resource> entry : found.entrySet()) {
-            Identifier file = entry.getKey();
+        for (Map.Entry<ResourceLocation, Resource> entry : found.entrySet()) {
+            ResourceLocation file = entry.getKey();
             String name = file.getPath();
             name = name.substring(name.lastIndexOf('/') + 1, name.length() - ".json".length());
             HorseBreed breed = HorseBreed.byId(name);

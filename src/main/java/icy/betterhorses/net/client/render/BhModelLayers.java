@@ -2,7 +2,7 @@ package icy.betterhorses.net.client.render;
 
 import net.fabricmc.fabric.api.client.rendering.v1.ModelLayerRegistry;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 public final class BhModelLayers {
 
@@ -232,6 +232,6 @@ public final class BhModelLayers {
 
     private static ModelLayerLocation layer(String path, String name) {
         return new ModelLayerLocation(
-                Identifier.fromNamespaceAndPath("icys-better-horses", path), name);
+                ResourceLocation.fromNamespaceAndPath("icys-better-horses", path), name);
     }
 }

@@ -3,7 +3,7 @@ package icy.betterhorses.net;
 import icy.betterhorses.net.inventory.CartChestMenu;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 
@@ -17,7 +17,7 @@ public final class ModMenus {
     private static <T extends net.minecraft.world.inventory.AbstractContainerMenu> MenuType<T> register(
             String name, MenuType<T> type) {
         return Registry.register(BuiltInRegistries.MENU,
-                Identifier.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, name), type);
+                ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, name), type);
     }
 
     public static void init() {}

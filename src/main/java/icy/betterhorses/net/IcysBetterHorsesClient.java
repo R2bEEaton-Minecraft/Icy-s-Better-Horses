@@ -38,14 +38,14 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
+import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import icy.betterhorses.net.entity.HorseCartEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
@@ -67,8 +67,7 @@ import icy.betterhorses.net.client.book.BhChargeMeterPageRenderer;
 
 public class IcysBetterHorsesClient implements ClientModInitializer {
 
-    private static final KeyMapping.Category CATEGORY = KeyMapping.Category.register(
-            Identifier.fromNamespaceAndPath("icys-better-horses", "general"));
+    private static final String CATEGORY = "key.category.icys-better-horses.general";
     private static final double RADIAL_REACH = 12.0D;
 
     public static KeyMapping CALL_KEY;
@@ -86,41 +85,41 @@ public class IcysBetterHorsesClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        CALL_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+        CALL_KEY = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.icys-better-horses.call",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_P,
                 CATEGORY));
-        RADIAL_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+        RADIAL_KEY = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.icys-better-horses.radial",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_R,
                 CATEGORY));
-        MANAGE_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+        MANAGE_KEY = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.icys-better-horses.manage",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_G,
                 CATEGORY));
 
-        GEAR_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+        GEAR_KEY = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.icys-better-horses.gear",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_V,
                 CATEGORY));
 
-        REAR_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+        REAR_KEY = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.icys-better-horses.rear",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_H,
                 CATEGORY));
 
-        FREE_LOOK_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+        FREE_LOOK_KEY = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.icys-better-horses.free_look",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_LEFT_CONTROL,
                 CATEGORY));
 
-        CART_SIZE_KEY = KeyMappingHelper.registerKeyMapping(new KeyMapping(
+        CART_SIZE_KEY = KeyBindingHelper.registerKeyBinding(new KeyMapping(
                 "key.icys-better-horses.cart_size",
                 InputConstants.Type.KEYSYM,
                 GLFW.GLFW_KEY_LEFT_ALT,
@@ -189,7 +188,7 @@ public class IcysBetterHorsesClient implements ClientModInitializer {
         net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientEntityEvents.ENTITY_UNLOAD.register((entity, level) -> {
             icy.betterhorses.net.client.render.BhEquineGait.remove(entity.getId());
             icy.betterhorses.net.client.render.BhRiderMotion.remove(entity.getId());
-            if (entity instanceof net.minecraft.world.entity.animal.equine.AbstractHorse horse) {
+            if (entity instanceof net.minecraft.world.entity.animal.horse.AbstractHorse horse) {
                 icy.betterhorses.net.client.render.HorseStabilizerAnimatable.remove(horse);
             }
         });

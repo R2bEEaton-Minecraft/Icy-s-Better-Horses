@@ -12,13 +12,13 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraft.world.entity.animal.equine.Horse;
-import net.minecraft.world.entity.animal.equine.Markings;
-import net.minecraft.world.entity.animal.equine.Variant;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.Horse;
+import net.minecraft.world.entity.animal.horse.Markings;
+import net.minecraft.world.entity.animal.horse.Variant;
 import icy.betterhorses.net.entity.BhBreedHorse;
 import java.util.Locale;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import org.lwjgl.glfw.GLFW;
 
 public class HorseInfoScreen extends Screen {
@@ -270,7 +270,7 @@ public class HorseInfoScreen extends Screen {
         pose.popMatrix();
     }
 
-    private void confirmButton(GuiGraphicsExtractor gfx, Font font, Identifier texture,
+    private void confirmButton(GuiGraphicsExtractor gfx, Font font, ResourceLocation texture,
                                int x, int y, Object key, String labelKey, int textColor, boolean hovered) {
         float ly = lift.get(key, hovered, LIFT_PX);
         BhScreenDraw.textureShadow(gfx, texture, x, y, CONFIRM_BTN_WIDTH, CONFIRM_BTN_HEIGHT, ly, 1f);

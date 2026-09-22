@@ -2,7 +2,7 @@ package icy.betterhorses.net;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.TicketType;
 
 public final class ModTicketTypes {
@@ -15,7 +15,7 @@ public final class ModTicketTypes {
     }
 
     private static TicketType register(String path, TicketType type) {
-        Identifier id = Identifier.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, path);
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, path);
         return Registry.register(BuiltInRegistries.TICKET_TYPE, id, type);
     }
 

@@ -18,9 +18,9 @@ import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -293,7 +293,7 @@ public class HorseRosterScreen extends Screen {
     }
 
     private void drawActionButton(GuiGraphicsExtractor gfx, HorseRosterEntry entry, HorseManageAction action,
-                                  Identifier texture, int x, int y, int width, Component label,
+                                  ResourceLocation texture, int x, int y, int width, Component label,
                                   int mouseX, int mouseY) {
         boolean flashing = ClientHorseRoster.isFlashing(entry.horseId(), action);
         boolean hovered = BhScreenDraw.inBox(mouseX, mouseY, x, y, width, BTN_HEIGHT);
@@ -505,7 +505,7 @@ public class HorseRosterScreen extends Screen {
                 && BhScreenDraw.inBox(mouseX, mouseY, btnX, btnY, SET_ACTIVE_WIDTH, SET_ACTIVE_HEIGHT);
         boolean flashing = ClientHorseRoster.isFlashing(selected.horseId(), HorseManageAction.SET_ACTIVE);
 
-        Identifier texture = alreadyActive
+        ResourceLocation texture = alreadyActive
                 ? BhScreenDraw.ACTIVE_BUTTON_TEXTURE
                 : BhScreenDraw.SET_ACTIVE_BUTTON_TEXTURE;
         Component label = alreadyActive
@@ -567,7 +567,7 @@ public class HorseRosterScreen extends Screen {
         pose.popMatrix();
     }
 
-    private void confirmButton(GuiGraphicsExtractor gfx, Identifier texture,
+    private void confirmButton(GuiGraphicsExtractor gfx, ResourceLocation texture,
                                int x, int y, Object key, String labelKey, int textColor, boolean hovered) {
         float ly = lift.get(key, hovered, LIFT_PX);
         BhScreenDraw.textureShadow(gfx, texture, x, y, CONFIRM_BTN_WIDTH, CONFIRM_BTN_HEIGHT, ly, 1f);

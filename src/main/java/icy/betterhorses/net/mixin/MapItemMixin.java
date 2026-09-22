@@ -9,11 +9,11 @@ import icy.betterhorses.net.IHorseData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.level.Level;
@@ -60,7 +60,7 @@ public abstract class MapItemMixin {
         BlockPos at = horse.blockPosition();
         Registry<Structure> reg = level.registryAccess().lookupOrThrow(Registries.STRUCTURE);
         for (Structure s : level.structureManager().getAllStructuresAt(at).keySet()) {
-            Identifier id = reg.getKey(s);
+            ResourceLocation id = reg.getKey(s);
             StructureStart start = level.structureManager().getStructureAt(at, s);
             if (id == null || !start.isValid()) {
                 continue;

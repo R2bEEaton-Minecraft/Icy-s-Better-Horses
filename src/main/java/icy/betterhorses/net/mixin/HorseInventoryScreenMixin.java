@@ -13,11 +13,11 @@ import net.minecraft.client.gui.screens.inventory.AbstractMountInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractMountInventoryMenu;
 import net.minecraft.world.inventory.Slot;
@@ -32,7 +32,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Locale;
-import net.minecraft.world.entity.animal.equine.Horse;
+import net.minecraft.world.entity.animal.horse.Horse;
 
 @Mixin(AbstractMountInventoryScreen.class)
 public abstract class HorseInventoryScreenMixin extends AbstractContainerScreen<AbstractMountInventoryMenu> {
@@ -41,10 +41,10 @@ public abstract class HorseInventoryScreenMixin extends AbstractContainerScreen<
     @Shadow private float xMouse;
     @Shadow private float yMouse;
 
-    @Unique private static final Identifier BH_SLOT_SPRITE =
-            Identifier.withDefaultNamespace("container/slot");
-    @Unique private static final Identifier BH_HORSE_TEXTURE =
-            Identifier.withDefaultNamespace("textures/gui/container/horse.png");
+    @Unique private static final ResourceLocation BH_SLOT_SPRITE =
+            ResourceLocation.withDefaultNamespace("container/slot");
+    @Unique private static final ResourceLocation BH_HORSE_TEXTURE =
+            ResourceLocation.withDefaultNamespace("textures/gui/container/horse.png");
 
     @Unique private static final int BH_VANILLA_IMAGE_HEIGHT = 166;
     @Unique private static final int BH_TOP_SECTION_HEIGHT = 77;
@@ -301,7 +301,7 @@ public abstract class HorseInventoryScreenMixin extends AbstractContainerScreen<
     }
 
     @Unique
-    private static void bh_blitGui(GuiGraphicsExtractor gfx, Identifier texture,
+    private static void bh_blitGui(GuiGraphicsExtractor gfx, ResourceLocation texture,
                                    int x, int y, int u, int v, int width, int height) {
         gfx.blit(RenderPipelines.GUI_TEXTURED, texture, x, y, (float) u, (float) v, width, height, 256, 256);
     }

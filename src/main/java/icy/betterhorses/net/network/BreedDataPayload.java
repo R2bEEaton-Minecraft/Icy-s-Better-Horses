@@ -5,7 +5,7 @@ import icy.betterhorses.net.BreedArchetype;
 import icy.betterhorses.net.HorseBreed;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -16,7 +16,7 @@ import java.util.Map;
 public record BreedDataPayload(List<Entry> entries) implements CustomPacketPayload {
 
     public static final Type<BreedDataPayload> TYPE =
-            new Type<>(Identifier.fromNamespaceAndPath("icys-better-horses", "breed_data"));
+            new Type<>(ResourceLocation.fromNamespaceAndPath("icys-better-horses", "breed_data"));
 
     private static final int MAX_ENTRIES = 128;
     private static final int MAX_NAME = 64;

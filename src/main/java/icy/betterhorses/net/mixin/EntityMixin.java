@@ -8,7 +8,7 @@ import icy.betterhorses.net.entity.HorseCartEntity;
 import icy.betterhorses.net.feature.breed.Ironclad;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
@@ -18,7 +18,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileDeflection;
@@ -44,11 +44,11 @@ public abstract class EntityMixin {
     }
 
     @Unique
-    private static final Identifier BH_MOUNTED_STEP_HEIGHT_ID =
-            Identifier.fromNamespaceAndPath("icys-better-horses", "mounted_step_height");
+    private static final ResourceLocation BH_MOUNTED_STEP_HEIGHT_ID =
+            ResourceLocation.fromNamespaceAndPath("icys-better-horses", "mounted_step_height");
     @Unique
-    private static final Identifier BH_MOUNTED_BREAK_SPEED_ID =
-            Identifier.fromNamespaceAndPath("icys-better-horses", "mounted_break_speed");
+    private static final ResourceLocation BH_MOUNTED_BREAK_SPEED_ID =
+            ResourceLocation.fromNamespaceAndPath("icys-better-horses", "mounted_break_speed");
     @Unique private static final double BH_MOUNTED_STEP_HEIGHT_BONUS = 0.1D;
     @Unique private static final double BH_MOUNTED_BREAK_SPEED_BONUS = 5.0D;
 
