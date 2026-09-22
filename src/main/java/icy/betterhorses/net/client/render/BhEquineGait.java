@@ -7,7 +7,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -211,7 +211,7 @@ public final class BhEquineGait {
             state.pullingCart = false;
         }
 
-        BhEquineGait gait = ACTIVE.computeIfAbsent(entity.getId(), BhEquineGait::new);
+        BhEquineGait gait = ACTIVE.computeIfAbsent(state.entityId, key -> new BhEquineGait(entity.getId()));
         gait.advance(state, state.ageInTicks);
     }
 
@@ -224,12 +224,14 @@ public final class BhEquineGait {
     }
 
     public void advance(BhHorseRenderState state, float ageInTicks) {
-        state.poseRevision++;
         float deltaSeconds;
         if (Float.isNaN(lastAgeInTicks)) {
             deltaSeconds = 0.0F;
         } else {
             deltaSeconds = Mth.clamp((ageInTicks - lastAgeInTicks) / 20.0F, 0.0F, 0.25F);
+        }
+        if (lastAgeInTicks != ageInTicks) {
+            state.poseRevision++;
         }
         lastAgeInTicks = ageInTicks;
 
@@ -650,3 +652,5 @@ public final class BhEquineGait {
         BhClientCaches.register(BhEquineGait::reset);
     }
 }
+
+

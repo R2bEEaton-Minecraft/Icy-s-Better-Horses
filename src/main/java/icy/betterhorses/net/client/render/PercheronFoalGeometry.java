@@ -164,3 +164,5 @@ public final class PercheronFoalGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

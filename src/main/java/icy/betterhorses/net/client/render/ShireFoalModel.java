@@ -23,3 +23,5 @@ public class ShireFoalModel extends ShireHorseModel {
         return front ? BhLargeFoalGait.FRONT_REACH : BhLargeFoalGait.BACK_REACH;
     }
 }
+
+

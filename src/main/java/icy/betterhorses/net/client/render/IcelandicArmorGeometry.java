@@ -86,3 +86,5 @@ public final class IcelandicArmorGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

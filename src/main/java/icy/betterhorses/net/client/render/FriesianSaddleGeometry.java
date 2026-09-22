@@ -92,3 +92,5 @@ public final class FriesianSaddleGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

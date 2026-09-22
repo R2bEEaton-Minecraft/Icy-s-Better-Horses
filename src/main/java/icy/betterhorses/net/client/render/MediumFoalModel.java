@@ -1,8 +1,9 @@
 package icy.betterhorses.net.client.render;
 
+import icy.betterhorses.net.entity.MediumHorse;
 import net.minecraft.client.model.geom.ModelPart;
 
-public class MediumFoalModel extends MediumHorseModel {
+public class MediumFoalModel<T extends MediumHorse> extends MediumHorseModel<T> {
 
     private static final float STRIDE = 0.55F;
 
@@ -31,3 +32,5 @@ public class MediumFoalModel extends MediumHorseModel {
         return front ? FRONT_REACH : BACK_REACH;
     }
 }
+
+

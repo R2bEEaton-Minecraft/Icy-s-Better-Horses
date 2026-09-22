@@ -163,3 +163,5 @@ public final class IcelandicFoalGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

@@ -25,3 +25,5 @@ public final class PercheronChestGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

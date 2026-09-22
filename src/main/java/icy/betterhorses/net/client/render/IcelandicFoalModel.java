@@ -31,3 +31,5 @@ public class IcelandicFoalModel extends IcelandicHorseModel {
         return front ? FRONT_REACH : BACK_REACH;
     }
 }
+
+

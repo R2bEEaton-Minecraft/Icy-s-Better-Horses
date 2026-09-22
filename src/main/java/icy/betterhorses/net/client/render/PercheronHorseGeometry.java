@@ -168,3 +168,5 @@ public final class PercheronHorseGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

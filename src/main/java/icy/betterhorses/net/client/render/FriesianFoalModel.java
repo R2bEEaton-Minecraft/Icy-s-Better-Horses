@@ -31,3 +31,5 @@ public class FriesianFoalModel extends FriesianHorseModel {
         return front ? FRONT_REACH : BACK_REACH;
     }
 }
+
+

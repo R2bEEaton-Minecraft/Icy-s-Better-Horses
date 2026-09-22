@@ -23,3 +23,5 @@ public class PercheronFoalModel extends PercheronHorseModel {
         return front ? BhLargeFoalGait.FRONT_REACH : BhLargeFoalGait.BACK_REACH;
     }
 }
+
+

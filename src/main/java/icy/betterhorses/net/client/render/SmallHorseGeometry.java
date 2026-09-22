@@ -180,3 +180,5 @@ public final class SmallHorseGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

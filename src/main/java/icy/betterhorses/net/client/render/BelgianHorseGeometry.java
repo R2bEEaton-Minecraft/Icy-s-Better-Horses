@@ -176,3 +176,5 @@ public final class BelgianHorseGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

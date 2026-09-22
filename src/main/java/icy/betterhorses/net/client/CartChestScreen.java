@@ -1,16 +1,15 @@
 package icy.betterhorses.net.client;
 
 import icy.betterhorses.net.inventory.CartChestMenu;
-import net.minecraft.client.gui.GuiGraphicsExtractor;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
 public class CartChestScreen extends AbstractContainerScreen<CartChestMenu> {
 
-    private static final Identifier SLOT_SPRITE = Identifier.withDefaultNamespace("container/slot");
+    private static final ResourceLocation SLOT_SPRITE = ResourceLocation.withDefaultNamespace("container/slot");
 
     private static final int BORDER = 7;
     private static final int WIDTH = BORDER * 2 + CartChestMenu.COLUMNS * 18;
@@ -27,15 +26,15 @@ public class CartChestScreen extends AbstractContainerScreen<CartChestMenu> {
     private static final int HOTBAR_TOP = 197;
 
     public CartChestScreen(CartChestMenu menu, Inventory inventory, Component title) {
-        super(menu, inventory, title, WIDTH, HEIGHT);
+        super(menu, inventory, title);
+        this.imageWidth = WIDTH;
+        this.imageHeight = HEIGHT;
         this.inventoryLabelX = PLAYER_LEFT + 1;
         this.inventoryLabelY = HEIGHT - 94;
     }
 
     @Override
-    public void extractBackground(GuiGraphicsExtractor gfx, int mouseX, int mouseY, float partialTick) {
-        super.extractBackground(gfx, mouseX, mouseY, partialTick);
-
+    protected void renderBg(GuiGraphics gfx, float partialTick, int mouseX, int mouseY) {
         int x = this.leftPos;
         int y = this.topPos;
         int right = x + WIDTH;
@@ -66,7 +65,9 @@ public class CartChestScreen extends AbstractContainerScreen<CartChestMenu> {
         }
     }
 
-    private static void slot(GuiGraphicsExtractor gfx, int x, int y) {
-        gfx.blitSprite(RenderPipelines.GUI_TEXTURED, SLOT_SPRITE, x, y, 18, 18);
+    private static void slot(GuiGraphics gfx, int x, int y) {
+        gfx.blitSprite(SLOT_SPRITE, x, y, 18, 18);
     }
 }
+
+

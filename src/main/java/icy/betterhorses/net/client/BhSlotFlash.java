@@ -35,3 +35,5 @@ public final class BhSlotFlash {
         return pulse * (1f - progress);
     }
 }
+
+

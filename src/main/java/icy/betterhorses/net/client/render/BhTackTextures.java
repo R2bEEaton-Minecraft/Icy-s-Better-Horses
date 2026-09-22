@@ -1,8 +1,7 @@
 package icy.betterhorses.net.client.render;
 
 import icy.betterhorses.net.IcysBetterHorses;
-import icy.betterhorses.net.ModItems;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -17,17 +16,17 @@ public final class BhTackTextures {
     public static final BhTackTextures SHIRE = new BhTackTextures("shire");
     public static final BhTackTextures SMALL = new BhTackTextures("small");
 
-    private final Identifier saddle;
-    private final Identifier saddleUpgraded;
-    private final Identifier chest;
-    private final Identifier enderChest;
+    private final ResourceLocation saddle;
+    private final ResourceLocation saddleUpgraded;
+    private final ResourceLocation chest;
+    private final ResourceLocation enderChest;
 
-    private final Identifier armorLeather;
-    private final Identifier armorCopper;
-    private final Identifier armorIron;
-    private final Identifier armorGold;
-    private final Identifier armorDiamond;
-    private final Identifier armorNetherite;
+    private final ResourceLocation armorLeather;
+    private final ResourceLocation armorCopper;
+    private final ResourceLocation armorIron;
+    private final ResourceLocation armorGold;
+    private final ResourceLocation armorDiamond;
+    private final ResourceLocation armorNetherite;
 
     private BhTackTextures(String breed) {
         String base = "textures/entity/horse/" + breed + "/";
@@ -43,24 +42,21 @@ public final class BhTackTextures {
         this.armorNetherite = tex(base, "armor_netherite");
     }
 
-    private static Identifier tex(String base, String name) {
-        return Identifier.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, base + name + ".png");
+    private static ResourceLocation tex(String base, String name) {
+        return ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.RESOURCE_NAMESPACE, base + name + ".png");
     }
 
-    public Identifier chest(boolean ender) {
+    public ResourceLocation chest(boolean ender) {
         return ender ? enderChest : chest;
     }
 
-    public Identifier saddle(ItemStack stack) {
-        return stack.is(ModItems.UPGRADED_SADDLE) ? saddleUpgraded : saddle;
+    public ResourceLocation saddle(boolean upgraded) {
+        return upgraded ? saddleUpgraded : saddle;
     }
 
-    public Identifier armor(ItemStack stack) {
+    public ResourceLocation armor(ItemStack stack) {
         if (stack.is(Items.LEATHER_HORSE_ARMOR)) {
             return armorLeather;
-        }
-        if (stack.is(Items.COPPER_HORSE_ARMOR)) {
-            return armorCopper;
         }
         if (stack.is(Items.GOLDEN_HORSE_ARMOR)) {
             return armorGold;
@@ -68,9 +64,8 @@ public final class BhTackTextures {
         if (stack.is(Items.DIAMOND_HORSE_ARMOR)) {
             return armorDiamond;
         }
-        if (stack.is(Items.NETHERITE_HORSE_ARMOR)) {
-            return armorNetherite;
-        }
         return armorIron;
     }
 }
+
+

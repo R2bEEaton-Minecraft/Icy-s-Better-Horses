@@ -169,3 +169,5 @@ public final class IcelandicHorseGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

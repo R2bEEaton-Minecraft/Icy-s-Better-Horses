@@ -35,3 +35,5 @@ public record BhRiderMotion(float right, float up, float forward, float pitch, f
         BhClientCaches.register(BhRiderMotion::reset);
     }
 }
+
+

@@ -180,3 +180,5 @@ public final class ClydesdaleHorseGeometry {
         return LayerDefinition.create(mesh, TEXTURE_WIDTH, TEXTURE_HEIGHT);
     }
 }
+
+

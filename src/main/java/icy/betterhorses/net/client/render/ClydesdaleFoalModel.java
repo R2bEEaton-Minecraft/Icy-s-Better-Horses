@@ -23,3 +23,5 @@ public class ClydesdaleFoalModel extends ClydesdaleHorseModel {
         return front ? BhLargeFoalGait.FRONT_REACH : BhLargeFoalGait.BACK_REACH;
     }
 }
+
+
