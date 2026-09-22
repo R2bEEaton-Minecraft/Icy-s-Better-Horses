@@ -249,7 +249,7 @@ public class IcysBetterHorsesClient implements ClientModInitializer {
             if (bh_anyHorseRoused(client)) {
                 ClientPlayNetworking.send(new HorseRecallPayload());
             } else if (client.player.getVehicle() instanceof AbstractHorse mount) {
-                client.setScreenAndShow(new HorseInfoScreen(mount));
+                client.setScreen(new HorseInfoScreen(mount));
             } else {
                 ClientPlayNetworking.send(new CallHorsePayload());
             }
@@ -262,8 +262,8 @@ public class IcysBetterHorsesClient implements ClientModInitializer {
         }
 
         while (MANAGE_KEY.consumeClick()) {
-            if (client.gui.screen() == null) {
-                client.setScreenAndShow(new HorseRosterScreen());
+            if (client.screen == null) {
+                client.setScreen(new HorseRosterScreen());
             }
         }
 
@@ -282,7 +282,7 @@ public class IcysBetterHorsesClient implements ClientModInitializer {
 
     private static void bh_shiftGear(Minecraft client) {
         LocalPlayer player = client.player;
-        if (player == null || client.gui.screen() != null) {
+        if (player == null || client.screen != null) {
             return;
         }
         if (!(player.getControlledVehicle() instanceof AbstractHorse horse)
@@ -298,13 +298,12 @@ public class IcysBetterHorsesClient implements ClientModInitializer {
             case BhGears.GALLOP_GEAR -> "gallop";
             default -> "halt";
         };
-        client.gui.chatListener().handleOverlay(
-                Component.translatable("message.icys-better-horses.gait." + gait));
+        client.gui.setOverlayMessage(Component.translatable("message.icys-better-horses.gait." + gait), false);
     }
 
     private static void bh_tryRear(Minecraft client) {
         LocalPlayer player = client.player;
-        if (player == null || client.gui.screen() != null) {
+        if (player == null || client.screen != null) {
             return;
         }
 
@@ -320,7 +319,7 @@ public class IcysBetterHorsesClient implements ClientModInitializer {
 
     private static void bh_trySwapCartSize(Minecraft client) {
         LocalPlayer player = client.player;
-        if (player == null || client.gui.screen() != null) {
+        if (player == null || client.screen != null) {
             return;
         }
 
@@ -359,7 +358,7 @@ public class IcysBetterHorsesClient implements ClientModInitializer {
 
     private static void bh_tryOpenRadial(Minecraft client) {
         LocalPlayer player = client.player;
-        if (player == null || client.gui.screen() != null) {
+        if (player == null || client.screen != null) {
             return;
         }
         AbstractHorse horse = bh_lookedAtHorse(player);
@@ -372,7 +371,7 @@ public class IcysBetterHorsesClient implements ClientModInitializer {
                 && !ClientTrustCache.isTrustedBy(owner)) {
             return;
         }
-        client.setScreenAndShow(new RadialMenuScreen(horse.getId()));
+        client.setScreen(new RadialMenuScreen(horse.getId()));
     }
 
     private static AbstractHorse bh_lookedAtHorse(LocalPlayer player) {

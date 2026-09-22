@@ -130,7 +130,7 @@ public final class HorseCombat implements HorseFeature {
 
         boolean killed = false;
         for (LivingEntity target : hit) {
-            target.hurtServer(level, src, dmg);
+            target.hurt(src, dmg);
             shove(target, dir, arch.bashKnockback());
             killed |= target.isDeadOrDying();
         }
@@ -214,7 +214,7 @@ public final class HorseCombat implements HorseFeature {
         if (target instanceof Player) {
             return false;
         }
-        return !(target instanceof OwnableEntity owned) || owned.getOwnerReference() == null;
+        return !(target instanceof OwnableEntity owned) || owned.getOwnerUUID() == null;
     }
 
     private List<LivingEntity> targets(AbstractHorse horse, IHorseData data, Player rider, Vec3 flat) {
@@ -272,7 +272,7 @@ public final class HorseCombat implements HorseFeature {
         }
 
         strike(level, horse, data, attacker);
-        horse.clearStanding();
+        data.bh_clearStanding();
         if (data.bh_getCombatTarget() == null) {
             data.bh_setSpookTicks(BOLT_TICKS);
         }
@@ -299,7 +299,7 @@ public final class HorseCombat implements HorseFeature {
 
     private static void hit(ServerLevel level, AbstractHorse horse, LivingEntity target,
                             ResourceKey<DamageType> type, float damage, double knockback) {
-        target.hurtServer(level, level.damageSources().source(type, horse, horse), damage);
+        target.hurt(level.damageSources().source(type, horse, horse), damage);
         Vec3 away = target.position().subtract(horse.position());
         if (away.lengthSqr() > 1.0E-4D) {
             shove(target, new Vec3(away.x, 0.0D, away.z).normalize(), knockback);

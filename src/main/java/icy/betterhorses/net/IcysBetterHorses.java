@@ -79,21 +79,21 @@ public class IcysBetterHorses implements ModInitializer {
     }
 
     private void registerPackets() {
-        PayloadTypeRegistry.serverboundPlay().register(RadialCommandPayload.TYPE, new RadialCommandPayload.StreamCodec());
-        PayloadTypeRegistry.serverboundPlay().register(CallHorsePayload.TYPE, new CallHorsePayload.StreamCodec());
-        PayloadTypeRegistry.serverboundPlay().register(HorseRecallPayload.TYPE, new HorseRecallPayload.StreamCodec());
-        PayloadTypeRegistry.serverboundPlay().register(OpenHorseRosterPayload.TYPE, new OpenHorseRosterPayload.StreamCodec());
-        PayloadTypeRegistry.serverboundPlay().register(HorseManagePayload.TYPE, new HorseManagePayload.StreamCodec());
-        PayloadTypeRegistry.serverboundPlay().register(HorseGearPayload.TYPE, new HorseGearPayload.StreamCodec());
-        PayloadTypeRegistry.serverboundPlay().register(BhFreeLookPayload.TYPE, new BhFreeLookPayload.StreamCodec());
-        PayloadTypeRegistry.serverboundPlay().register(BhRearPayload.TYPE, new BhRearPayload.StreamCodec());
-        PayloadTypeRegistry.serverboundPlay().register(CartSizePayload.TYPE, new CartSizePayload.StreamCodec());
-        PayloadTypeRegistry.clientboundPlay().register(HorseRosterSyncPayload.TYPE, new HorseRosterSyncPayload.StreamCodec());
-        PayloadTypeRegistry.clientboundPlay().register(HorseManageResultPayload.TYPE, new HorseManageResultPayload.StreamCodec());
-        PayloadTypeRegistry.clientboundPlay().register(TrustSyncPayload.TYPE, new TrustSyncPayload.StreamCodec());
-        PayloadTypeRegistry.clientboundPlay().register(ConfigSyncPayload.TYPE, new ConfigSyncPayload.StreamCodec());
-        PayloadTypeRegistry.clientboundPlay().register(BreedDataPayload.TYPE, new BreedDataPayload.StreamCodec());
-        PayloadTypeRegistry.clientboundPlay().register(HorseChargeShakePayload.TYPE, new HorseChargeShakePayload.StreamCodec());
+        PayloadTypeRegistry.playC2S().register(RadialCommandPayload.TYPE, new RadialCommandPayload.StreamCodec());
+        PayloadTypeRegistry.playC2S().register(CallHorsePayload.TYPE, new CallHorsePayload.StreamCodec());
+        PayloadTypeRegistry.playC2S().register(HorseRecallPayload.TYPE, new HorseRecallPayload.StreamCodec());
+        PayloadTypeRegistry.playC2S().register(OpenHorseRosterPayload.TYPE, new OpenHorseRosterPayload.StreamCodec());
+        PayloadTypeRegistry.playC2S().register(HorseManagePayload.TYPE, new HorseManagePayload.StreamCodec());
+        PayloadTypeRegistry.playC2S().register(HorseGearPayload.TYPE, new HorseGearPayload.StreamCodec());
+        PayloadTypeRegistry.playC2S().register(BhFreeLookPayload.TYPE, new BhFreeLookPayload.StreamCodec());
+        PayloadTypeRegistry.playC2S().register(BhRearPayload.TYPE, new BhRearPayload.StreamCodec());
+        PayloadTypeRegistry.playC2S().register(CartSizePayload.TYPE, new CartSizePayload.StreamCodec());
+        PayloadTypeRegistry.playS2C().register(HorseRosterSyncPayload.TYPE, new HorseRosterSyncPayload.StreamCodec());
+        PayloadTypeRegistry.playS2C().register(HorseManageResultPayload.TYPE, new HorseManageResultPayload.StreamCodec());
+        PayloadTypeRegistry.playS2C().register(TrustSyncPayload.TYPE, new TrustSyncPayload.StreamCodec());
+        PayloadTypeRegistry.playS2C().register(ConfigSyncPayload.TYPE, new ConfigSyncPayload.StreamCodec());
+        PayloadTypeRegistry.playS2C().register(BreedDataPayload.TYPE, new BreedDataPayload.StreamCodec());
+        PayloadTypeRegistry.playS2C().register(HorseChargeShakePayload.TYPE, new HorseChargeShakePayload.StreamCodec());
     }
 
     public static void sendTrustList(ServerPlayer player) {
