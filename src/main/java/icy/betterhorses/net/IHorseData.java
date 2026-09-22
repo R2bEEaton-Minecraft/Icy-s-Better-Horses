@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
@@ -13,7 +13,7 @@ import icy.betterhorses.net.inventory.GearSlot;
 import java.util.UUID;
 import icy.betterhorses.net.entity.CartSize;
 import icy.betterhorses.net.entity.HorseCartEntity;
-import net.minecraft.world.entity.animal.equine.Horse;
+import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.player.Player;
 
 public interface IHorseData {
@@ -162,6 +162,8 @@ public interface IHorseData {
 
     void bh_ridePlayer(Player player);
 
+    void bh_clearStanding();
+
     boolean bh_hasUpgradedSaddle();
 
     SimpleContainer bh_getGearContainer();
@@ -184,3 +186,5 @@ public interface IHorseData {
         return (IHorseData) horse;
     }
 }
+
+

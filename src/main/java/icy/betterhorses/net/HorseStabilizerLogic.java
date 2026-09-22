@@ -69,3 +69,5 @@ public final class HorseStabilizerLogic {
 
     private HorseStabilizerLogic() {}
 }
+
+

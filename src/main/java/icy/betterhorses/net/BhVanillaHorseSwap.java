@@ -5,8 +5,8 @@ import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySpawnReason;
-import net.minecraft.world.entity.animal.equine.Horse;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.level.biome.Biome;
 
 import java.util.List;
@@ -28,18 +28,14 @@ public final class BhVanillaHorseSwap {
             breed = pickForBiome(level, horse);
         }
 
-        BhBreedHorse swap = ModEntities.forBreed(breed).create(level, EntitySpawnReason.CONVERSION);
+        BhBreedHorse swap = ModEntities.forBreed(breed).create(level);
         if (swap == null) {
             return false;
         }
 
-        var out = net.minecraft.world.level.storage.TagValueOutput.createWithContext(
-                net.minecraft.util.ProblemReporter.DISCARDING, horse.registryAccess());
-        horse.saveWithoutId(out);
-        var tag = out.buildResult();
+        var tag = horse.saveWithoutId(new net.minecraft.nbt.CompoundTag());
         tag.putString("BH_BreedId", breed.id());
-        swap.load(net.minecraft.world.level.storage.TagValueInput.create(
-                net.minecraft.util.ProblemReporter.DISCARDING, horse.registryAccess(), tag));
+        swap.load(tag);
         swap.bhConvertFrom(horse);
         swap.setHealth(Math.min(horse.getHealth(), swap.getMaxHealth()));
         horse.remove(Entity.RemovalReason.CHANGED_DIMENSION);
@@ -62,3 +58,5 @@ public final class BhVanillaHorseSwap {
     }
 
 }
+
+

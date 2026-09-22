@@ -4,7 +4,7 @@ import icy.betterhorses.net.BreedArchetype;
 import icy.betterhorses.net.HorseBreed;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.animal.equine.Horse;
+import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.level.Level;
 
 public class IcelandicHorse extends BhBreedHorse {
@@ -31,3 +31,5 @@ public class IcelandicHorse extends BhBreedHorse {
     }
 
 }
+
+

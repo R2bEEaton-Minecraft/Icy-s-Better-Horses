@@ -7,3 +7,5 @@ public interface IHorseAbilityHost {
 
     @Nullable BreedAbility bh_currentAbility();
 }
+
+

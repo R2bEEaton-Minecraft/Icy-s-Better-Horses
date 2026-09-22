@@ -4,6 +4,12 @@
     "minecraft:plains",
     "minecraft:sunflower_plains",
     "minecraft:savanna",
-    "minecraft:sparse_jungle"
+    "minecraft:sparse_jungle",
+    "terralith:fractured_savanna",
+    "terralith:savanna_slopes",
+    "biomeswevegone:prairie",
+    "biomeswevegone:araucaria_savanna",
+    "biomeswevegone:baobab_savanna",
+    "biomeswevegone:coconino_meadow"
   ]
 }

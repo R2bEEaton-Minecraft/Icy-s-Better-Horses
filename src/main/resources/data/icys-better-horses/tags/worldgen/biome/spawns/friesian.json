@@ -5,6 +5,12 @@
     "minecraft:forest",
     "minecraft:pale_garden",
     "minecraft:old_growth_spruce_taiga",
-    "minecraft:taiga"
+    "minecraft:taiga",
+    "terralith:moonlight_grove",
+    "terralith:wintry_forest",
+    "biomeswevegone:black_forest",
+    "biomeswevegone:ebony_woods",
+    "biomeswevegone:forgotten_forest",
+    "biomeswevegone:overgrowth_woodlands"
   ]
 }

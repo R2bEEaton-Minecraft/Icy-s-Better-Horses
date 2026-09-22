@@ -4,6 +4,13 @@
     "minecraft:taiga",
     "minecraft:old_growth_spruce_taiga",
     "minecraft:old_growth_pine_taiga",
-    "minecraft:forest"
+    "minecraft:forest",
+    "terralith:birch_taiga",
+    "terralith:forested_highlands",
+    "terralith:wintry_forest",
+    "biomeswevegone:aspen_boreal",
+    "biomeswevegone:coniferous_forest",
+    "biomeswevegone:maple_taiga",
+    "biomeswevegone:redwood_thicket"
   ]
 }

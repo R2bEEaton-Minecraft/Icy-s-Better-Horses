@@ -6,6 +6,15 @@
     "minecraft:eroded_badlands",
     "minecraft:savanna",
     "minecraft:savanna_plateau",
-    "minecraft:windswept_savanna"
+    "minecraft:windswept_savanna",
+    "terralith:ancient_sands",
+    "terralith:desert_oasis",
+    "terralith:desert_spires",
+    "terralith:gravel_desert",
+    "terralith:savanna_badlands",
+    "biomeswevegone:atacama_outback",
+    "biomeswevegone:mojave_desert",
+    "biomeswevegone:windswept_desert",
+    "biomeswevegone:red_rock_valley"
   ]
 }

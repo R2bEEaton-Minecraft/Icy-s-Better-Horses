@@ -7,6 +7,13 @@
     "minecraft:frozen_peaks",
     "minecraft:jagged_peaks",
     "minecraft:snowy_slopes",
-    "minecraft:grove"
+    "minecraft:grove",
+    "terralith:frozen_cliffs",
+    "terralith:glacial_chasm",
+    "terralith:siberian_grove",
+    "terralith:siberian_taiga",
+    "biomeswevegone:crimson_tundra",
+    "biomeswevegone:frosted_taiga",
+    "biomeswevegone:shattered_glacier"
   ]
 }

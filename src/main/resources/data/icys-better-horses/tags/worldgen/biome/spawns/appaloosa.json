@@ -4,6 +4,12 @@
     "minecraft:plains",
     "minecraft:wooded_badlands",
     "minecraft:savanna_plateau",
-    "minecraft:sunflower_plains"
+    "minecraft:sunflower_plains",
+    "terralith:brushland",
+    "terralith:savanna_badlands",
+    "terralith:warped_mesa",
+    "biomeswevegone:prairie",
+    "biomeswevegone:rugged_badlands",
+    "biomeswevegone:sierra_badlands"
   ]
 }

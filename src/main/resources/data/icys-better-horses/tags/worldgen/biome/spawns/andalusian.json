@@ -5,6 +5,13 @@
     "minecraft:cherry_grove",
     "minecraft:flower_forest",
     "minecraft:plains",
-    "minecraft:forest"
+    "minecraft:forest",
+    "terralith:blooming_valley",
+    "terralith:lavender_valley",
+    "terralith:sakura_grove",
+    "biomeswevegone:allium_shrubland",
+    "biomeswevegone:rose_fields",
+    "biomeswevegone:sakura_grove",
+    "biomeswevegone:temperate_grove"
   ]
 }

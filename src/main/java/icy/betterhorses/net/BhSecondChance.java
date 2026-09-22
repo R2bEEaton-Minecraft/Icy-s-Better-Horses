@@ -4,7 +4,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
 public final class BhSecondChance {
 
@@ -31,9 +31,11 @@ public final class BhSecondChance {
             BhCriteria.fire(saved, BhCriteria.SECOND_CHANCE);
         }
         horse.setHealth(1.0F);
-        horse.hurtServer(level, source, 0.0F);
+        horse.hurt(source, 0.0F);
         rider.level().playSound(null, rider.getX(), rider.getY(), rider.getZ(),
                 ModSounds.HORSE_NEIGH, rider.getSoundSource(), 1.0F, 0.7F);
         return true;
     }
 }
+
+

@@ -17,3 +17,5 @@ public enum HorseGender {
         return Component.translatable("gender.icys-better-horses." + name().toLowerCase());
     }
 }
+
+

@@ -5,6 +5,12 @@
     "minecraft:sunflower_plains",
     "minecraft:meadow",
     "minecraft:forest",
-    "minecraft:birch_forest"
+    "minecraft:birch_forest",
+    "terralith:blooming_valley",
+    "terralith:lavender_valley",
+    "biomeswevegone:amaranth_grassland",
+    "biomeswevegone:allium_shrubland",
+    "biomeswevegone:prairie",
+    "biomeswevegone:rose_fields"
   ]
 }

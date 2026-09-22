@@ -4,6 +4,11 @@
     "minecraft:old_growth_spruce_taiga",
     "minecraft:forest",
     "minecraft:meadow",
-    "minecraft:plains"
+    "minecraft:plains",
+    "terralith:forested_highlands",
+    "terralith:valley_clearing",
+    "biomeswevegone:aspen_boreal",
+    "biomeswevegone:coniferous_forest",
+    "biomeswevegone:prairie"
   ]
 }

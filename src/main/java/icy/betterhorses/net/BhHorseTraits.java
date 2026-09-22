@@ -6,8 +6,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
-import net.minecraft.world.entity.animal.equine.Horse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.List;
@@ -64,3 +64,5 @@ public final class BhHorseTraits {
     }
 
 }
+
+

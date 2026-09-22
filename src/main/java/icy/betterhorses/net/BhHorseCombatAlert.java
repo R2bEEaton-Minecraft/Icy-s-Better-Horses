@@ -2,7 +2,7 @@ package icy.betterhorses.net;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.UUID;
@@ -59,3 +59,5 @@ public final class BhHorseCombatAlert {
         data.bh_setCombatTarget(threat.getUUID());
     }
 }
+
+

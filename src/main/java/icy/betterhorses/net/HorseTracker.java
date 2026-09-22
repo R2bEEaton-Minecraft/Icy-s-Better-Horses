@@ -3,7 +3,7 @@ package icy.betterhorses.net;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -215,3 +215,5 @@ public final class HorseTracker {
         }
     }
 }
+
+

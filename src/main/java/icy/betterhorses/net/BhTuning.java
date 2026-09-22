@@ -29,3 +29,5 @@ public record BhTuning(
         return bondMinutes * 20 * 60;
     }
 }
+
+

@@ -26,3 +26,5 @@ public interface HorseInventoryLayoutAccess {
     default void bh_onMenuRemoved(Player player) {
     }
 }
+
+

@@ -3,10 +3,10 @@ package icy.betterhorses.net.entity;
 import icy.betterhorses.net.BreedArchetype;
 import icy.betterhorses.net.IcysBetterHorses;
 import icy.betterhorses.net.inventory.CartChestMenu;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
 
-import com.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.animation.RawAnimation;
 
 public enum CartSize {
 
@@ -18,9 +18,9 @@ public enum CartSize {
             "wheel moving", "chest open", "chest close", "idle", null,
             2.875D, 1.8125D, 1.525D, 3.4D, 0.75D, 4, 2, CartChestMenu.SLOTS);
 
-    private final Identifier model;
-    private final Identifier texture;
-    private final Identifier animation;
+    private final ResourceLocation model;
+    private final ResourceLocation texture;
+    private final ResourceLocation animation;
     private final String chestBone;
 
     private final RawAnimation wheelsRolling;
@@ -44,9 +44,9 @@ public enum CartSize {
              double bedCenterBehind, double bedHalfLength, double benchHeight,
              double rearSeatBehind, double rearRowSpacing,
              int rearSeatCount, int rearSeatsWithChest, int chestSlots) {
-        this.model = id(asset);
+        this.model = id("geo/" + asset + ".geo.json");
         this.texture = id("textures/entity/" + asset + ".png");
-        this.animation = id(asset);
+        this.animation = id("animations/" + asset + ".animation.json");
         this.chestBone = chestBone;
         this.wheelsRolling = RawAnimation.begin().thenLoop(wheelAnim);
         this.chestOpening = RawAnimation.begin().thenPlayAndHold(chestOpenAnim);
@@ -63,8 +63,8 @@ public enum CartSize {
         this.chestSlots = chestSlots;
     }
 
-    private static Identifier id(String path) {
-        return Identifier.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, path);
+    private static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.RESOURCE_NAMESPACE, path);
     }
 
     public static CartSize forArchetype(BreedArchetype archetype) {
@@ -79,15 +79,15 @@ public enum CartSize {
         return this == LARGE;
     }
 
-    public Identifier model() {
+    public ResourceLocation model() {
         return this.model;
     }
 
-    public Identifier texture() {
+    public ResourceLocation texture() {
         return this.texture;
     }
 
-    public Identifier animation() {
+    public ResourceLocation animation() {
         return this.animation;
     }
 
@@ -151,3 +151,5 @@ public enum CartSize {
         return withChest ? this.rearSeatsWithChest : this.rearSeatCount;
     }
 }
+
+

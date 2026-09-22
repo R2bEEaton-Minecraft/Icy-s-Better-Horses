@@ -11,3 +11,5 @@ public enum HorseManageAction {
         return values[Math.max(0, Math.min(id, values.length - 1))];
     }
 }
+
+

@@ -6,6 +6,14 @@
     "minecraft:windswept_hills",
     "minecraft:badlands",
     "minecraft:wooded_badlands",
-    "minecraft:sparse_jungle"
+    "minecraft:sparse_jungle",
+    "terralith:arid_highlands",
+    "terralith:brushland",
+    "terralith:hot_shrubland",
+    "terralith:rocky_shrubland",
+    "biomeswevegone:atacama_outback",
+    "biomeswevegone:firecracker_chaparral",
+    "biomeswevegone:rugged_badlands",
+    "biomeswevegone:skyris_vale"
   ]
 }

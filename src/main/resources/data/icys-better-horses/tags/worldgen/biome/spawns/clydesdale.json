@@ -4,6 +4,12 @@
     "minecraft:windswept_hills",
     "minecraft:windswept_gravelly_hills",
     "minecraft:windswept_forest",
-    "minecraft:old_growth_pine_taiga"
+    "minecraft:old_growth_pine_taiga",
+    "terralith:highlands",
+    "terralith:rocky_mountains",
+    "terralith:temperate_highlands",
+    "biomeswevegone:dacite_ridges",
+    "biomeswevegone:howling_peaks",
+    "biomeswevegone:canadian_shield"
   ]
 }

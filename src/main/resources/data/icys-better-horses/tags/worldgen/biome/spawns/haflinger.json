@@ -6,6 +6,11 @@
     "minecraft:meadow",
     "minecraft:frozen_peaks",
     "minecraft:jagged_peaks",
-    "minecraft:stony_peaks"
+    "minecraft:stony_peaks",
+    "terralith:alpine_grove",
+    "terralith:alpine_highlands",
+    "terralith:emerald_peaks",
+    "biomeswevegone:howling_peaks",
+    "biomeswevegone:red_rock_peaks"
   ]
 }
