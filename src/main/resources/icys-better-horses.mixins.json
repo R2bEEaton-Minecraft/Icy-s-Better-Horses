@@ -31,21 +31,15 @@
 	"client": [
 		"AbstractContainerScreenAccessor",
 		"AbstractContainerScreenMixin",
-		"AbstractEquineModelMixin",
 		"AbstractHorseRendererMixin",
 		"CameraMixin",
-		"EquipmentLayerRendererMixin",
-		"EquineRenderStateMixin",
-		"GuiGraphicsExtractorAccessor",
 		"GuiMixin",
-		"HorseMarkingLayerMixin",
 		"HorseInventoryScreenMixin",
 		"HorseModelAccessor",
 		"KeyboardInputMixin",
-		"LivingEntityRenderStateRiderMixin",
 		"LivingEntityRendererMixin",
 		"LivingEntityRendererRiderMixin",
-		"LivingEntityRendererSubmitMixin"
+		"HorseModelMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

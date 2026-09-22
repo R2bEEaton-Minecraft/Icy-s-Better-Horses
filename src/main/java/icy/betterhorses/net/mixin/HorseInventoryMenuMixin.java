@@ -23,7 +23,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import icy.betterhorses.net.BhCriteria;
 import icy.betterhorses.net.ModItems;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.ContainerUser;
 import net.minecraft.world.entity.animal.horse.Horse;
 import org.jetbrains.annotations.Nullable;
 
@@ -133,12 +132,12 @@ public abstract class HorseInventoryMenuMixin extends AbstractContainerMenu impl
             }
 
             @Override
-            public void startOpen(ContainerUser user) {
+            public void startOpen(Player user) {
                 this.bh_active().startOpen(user);
             }
 
             @Override
-            public void stopOpen(ContainerUser user) {
+            public void stopOpen(Player user) {
                 this.bh_active().stopOpen(user);
             }
 
@@ -147,7 +146,7 @@ public abstract class HorseInventoryMenuMixin extends AbstractContainerMenu impl
                 this.bh_active().clearContent();
             }
         };
-        this.bh_playerInventoryStartIndex = horseContainer.getContainerSize() + 2;
+        this.bh_playerInventoryStartIndex = horseContainer.getContainerSize() + 1;
         this.bh_playerInventoryEndIndex = Math.min(this.bh_playerInventoryStartIndex + 36, this.slots.size());
 
         this.bh_gearStartIndex = this.slots.size();
