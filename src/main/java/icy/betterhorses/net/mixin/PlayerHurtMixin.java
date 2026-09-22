@@ -16,18 +16,19 @@ public abstract class PlayerHurtMixin {
 
     @org.spongepowered.asm.mixin.injection.Redirect(method = "actuallyHurt", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/entity/player/Player;setHealth(F)V"))
-    private void bh_rescueRider(Player player, float health, ServerLevel level, DamageSource source, float amount) {
-        if (health <= 0.0F && icy.betterhorses.net.BhSecondChance.intercept(level, player, source, player.getHealth() - health)) {
+    private void bh_rescueRider(Player player, float health, DamageSource source, float amount) {
+        if (health <= 0.0F && player.level() instanceof ServerLevel level
+                && icy.betterhorses.net.BhSecondChance.intercept(level, player, source, player.getHealth() - health)) {
             return;
         }
         player.setHealth(health);
     }
 
     @Inject(method = "actuallyHurt", at = @At("TAIL"))
-    private void bh_rouseHorses(ServerLevel level, DamageSource source, float amount,
-                                CallbackInfo ci) {
+    private void bh_rouseHorses(DamageSource source, float amount, CallbackInfo ci) {
         Player self = (Player) (Object) this;
         if (!BhConfig.horseCombatEnabled()
+                || !(self.level() instanceof ServerLevel level)
                 || !(source.getEntity() instanceof LivingEntity threat) || threat == self) {
             return;
         }

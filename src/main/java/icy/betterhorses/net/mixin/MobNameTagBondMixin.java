@@ -10,7 +10,6 @@ import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -25,7 +24,7 @@ public abstract class MobNameTagBondMixin {
     @Unique private @Nullable Component bh$nameBeforeInteract = null;
 
     @Inject(method = "interact", at = @At("HEAD"))
-    private void bh$captureNameTagState(Player player, InteractionHand hand, Vec3 hitPos, CallbackInfoReturnable<InteractionResult> cir) {
+    private void bh$captureNameTagState(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         Mob self = (Mob) (Object) this;
         if (!(self instanceof AbstractHorse)) {
             return;
@@ -39,7 +38,7 @@ public abstract class MobNameTagBondMixin {
     }
 
     @Inject(method = "interact", at = @At("RETURN"))
-    private void bh$rewardNameTagBond(Player player, InteractionHand hand, Vec3 hitPos, CallbackInfoReturnable<InteractionResult> cir) {
+    private void bh$rewardNameTagBond(Player player, InteractionHand hand, CallbackInfoReturnable<InteractionResult> cir) {
         try {
             if (!this.bh$nameTagInteractInFlight) {
                 return;

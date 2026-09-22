@@ -56,6 +56,8 @@ dependencies {
 	modImplementation "maven.modrinth:geckolib:${project.geckolib_version_id}"
 
 	modImplementation "maven.modrinth:modonomicon:${project.modonomicon_version_id}"
+	// Loom does not expose Modonomicon's bundled libraries to a development client.
+	modRuntimeOnly fileTree(layout.buildDirectory.dir("modonomicon-nested"))
 
 	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
 	modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
@@ -99,6 +101,33 @@ tasks.named("runClient", JavaExec).configure {
 		force("--uuid", offline.toString().replace("-", ""))
 		args = out
 	}
+}
+
+def modonomiconNestedDir = layout.buildDirectory.dir("modonomicon-nested")
+def extractModonomiconNestedJars = tasks.register("extractModonomiconNestedJars", Copy) {
+	from {
+		def modonomicon = configurations.modImplementation.files.find {
+			it.name.startsWith("modonomicon-") && it.name.endsWith(".jar")
+		}
+		if (modonomicon == null) {
+			throw new GradleException("Unable to locate the Modonomicon development artifact")
+		}
+		zipTree(modonomicon)
+	}
+	include "META-INF/jars/*.jar"
+	into modonomiconNestedDir
+	eachFile { details -> details.path = details.name }
+	includeEmptyDirs = false
+}
+
+tasks.named("runClient").configure {
+	dependsOn extractModonomiconNestedJars
+}
+
+tasks.matching {
+	it.name in ["generateRemapClasspath", "generateDLIConfig", "configureLaunch", "configureClientLaunch"]
+}.configureEach {
+	dependsOn extractModonomiconNestedJars
 }
 
 test {

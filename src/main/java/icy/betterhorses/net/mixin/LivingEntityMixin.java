@@ -8,7 +8,6 @@ import icy.betterhorses.net.feature.breed.SlowBlockImmunity;
 import icy.betterhorses.net.IHorseData;
 import icy.betterhorses.net.ModItems;
 import icy.betterhorses.net.inventory.GearSlot;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -62,14 +61,14 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @Inject(method = "isInvulnerableTo", at = @At("HEAD"), cancellable = true)
-    private void bh_shrugOffSlowBlocks(ServerLevel level, DamageSource source, CallbackInfoReturnable<Boolean> cir) {
+    private void bh_shrugOffSlowBlocks(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         if (SlowBlockImmunity.shrugsOffSlowBlockDamage((LivingEntity) (Object) this, source)) {
             cir.setReturnValue(true);
         }
     }
 
     @Inject(method = "actuallyHurt", at = @At("HEAD"), cancellable = true)
-    private void bh_queueHorseMedkit(ServerLevel level, DamageSource source, float amount, CallbackInfo ci) {
+    private void bh_queueHorseMedkit(DamageSource source, float amount, CallbackInfo ci) {
         this.bh_triggerHorseMedkitAfterDamage = false;
 
         LivingEntity self = (LivingEntity) (Object) this;
@@ -89,7 +88,7 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @Inject(method = "actuallyHurt", at = @At("TAIL"))
-    private void bh_afterDamage(ServerLevel level, DamageSource source, float amount, CallbackInfo ci) {
+    private void bh_afterDamage(DamageSource source, float amount, CallbackInfo ci) {
         LivingEntity self = (LivingEntity) (Object) this;
 
         if (!this.bh_triggerHorseMedkitAfterDamage) {

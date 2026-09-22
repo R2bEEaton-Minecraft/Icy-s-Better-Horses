@@ -12,7 +12,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
@@ -44,8 +43,11 @@ public abstract class MapItemMixin {
     }
 
     @Inject(method = "inventoryTick", at = @At("TAIL"))
-    private void bh_markPassedStructures(ItemStack stack, ServerLevel level, Entity holder,
-                                         EquipmentSlot slot, CallbackInfo ci) {
+    private void bh_markPassedStructures(ItemStack stack, Level world, Entity holder,
+                                         int slot, boolean selected, CallbackInfo ci) {
+        if (!(world instanceof ServerLevel level)) {
+            return;
+        }
         if (level.getGameTime() % 20L != 0L || !(holder.getVehicle() instanceof AbstractHorse horse)) {
             return;
         }

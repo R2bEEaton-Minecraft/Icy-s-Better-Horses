@@ -1044,7 +1044,10 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
 
     @Inject(
             method = "doPlayerRide",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;isClientSide()Z"),
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/entity/animal/horse/AbstractHorse;setStanding(Z)V",
+                    shift = At.Shift.AFTER),
             cancellable = true)
     private void bh_rotateHorseInsteadOfPlayer(Player player, CallbackInfo ci) {
         if (BhHorseInteraction.rotateHorseInsteadOfPlayer((AbstractHorse) (Object) this, this, player)) {
@@ -1138,7 +1141,7 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
     }
 
     @Inject(method = "causeFallDamage", at = @At("HEAD"), cancellable = true)
-    private void bh_adjustFallDamage(double distance, float damageMultiplier, DamageSource source, CallbackInfoReturnable<Boolean> cir) {
+    private void bh_adjustFallDamage(float distance, float damageMultiplier, DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         AbstractHorse self = (AbstractHorse) (Object) this;
         BhHorseInteraction.StabilizerLanding landing =
                 BhHorseInteraction.stabilizerLanding(self, this, distance);
@@ -1189,9 +1192,9 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
     }
 
     @Inject(method = "dropEquipment", at = @At("TAIL"))
-    private void bh_dropGearAndChest(ServerLevel level, CallbackInfo ci) {
+    private void bh_dropGearAndChest(CallbackInfo ci) {
         AbstractHorse self = (AbstractHorse) (Object) this;
-        if (self.level().isClientSide()) return;
+        if (!(self.level() instanceof ServerLevel level)) return;
         bh_dropCartChest();
         bh_dropCartPlough();
         BhHorseStorage.dropContainerContents(self, level, bh_gearContainer);
