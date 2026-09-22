@@ -27,21 +27,20 @@ public final class BhBiomeSpawns {
                     }
                     MobSpawnSettings mobSettings = selectionContext.getBiome().getMobSettings();
                     boolean alreadyHasHorse = mobSettings.getMobs(MobCategory.CREATURE).unwrap().stream()
-                            .anyMatch(weighted -> weighted.value().type == EntityType.HORSE);
+                            .anyMatch(weighted -> weighted.type == EntityType.HORSE);
                     float floor = (float) tuning.spawnFloor();
                     boolean boostedProbability = !alreadyHasHorse
                             && mobSettings.getCreatureProbability() < floor;
 
                     if (!alreadyHasHorse) {
-                        context.getMobSpawnSettings().addSpawn(
+                        context.getSpawnSettings().addSpawn(
                                 MobCategory.CREATURE,
                                 new MobSpawnSettings.SpawnerData(
-                                        EntityType.HORSE, tuning.groupMin(), tuning.groupMax()),
-                                tuning.spawnWeight());
+                                        EntityType.HORSE, tuning.spawnWeight(), tuning.groupMin(), tuning.groupMax()));
                     }
 
                     if (boostedProbability) {
-                        context.getMobSpawnSettings().setCreatureGenerationProbability(floor);
+                        context.getSpawnSettings().setCreatureSpawnProbability(floor);
                     }
                 });
     }

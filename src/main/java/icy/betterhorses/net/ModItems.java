@@ -1,8 +1,6 @@
 package icy.betterhorses.net;
 
 import icy.betterhorses.net.item.UpgradedSaddleItem;
-import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -13,7 +11,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.equipment.Equippable;
 import icy.betterhorses.net.item.HorseCartItem;
 import java.util.List;
 
@@ -21,11 +18,10 @@ public final class ModItems {
 
     public static final Item UPGRADED_SADDLE = register("upgraded_saddle",
             new UpgradedSaddleItem(itemProperties("upgraded_saddle")
-                    .stacksTo(1)
-                    .component(DataComponents.EQUIPPABLE, Equippable.saddle())));
+                    .stacksTo(1)));
 
     public static final Item HORSE_HOOVES = register("horse_hooves_gear",
-            new Item(itemProperties("horse_hooves_gear").stacksTo(1).enchantable(15)));
+            new Item(itemProperties("horse_hooves_gear").stacksTo(1)));
 
     public static final Item HORSE_MEDKIT = register("horse_medkit_gear",
             new Item(itemProperties("horse_medkit_gear").stacksTo(1)));
@@ -122,7 +118,7 @@ public final class ModItems {
     public static final CreativeModeTab STABLE_SUPPLIES_TAB = Registry.register(
             BuiltInRegistries.CREATIVE_MODE_TAB,
             ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, "stable_supplies"),
-            FabricCreativeModeTab.builder()
+            CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup.icys-better-horses.stable_supplies"))
                     .icon(() -> new ItemStack(UPGRADED_SADDLE))
                     .displayItems((parameters, entries) -> {

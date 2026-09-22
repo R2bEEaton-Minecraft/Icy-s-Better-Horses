@@ -208,7 +208,6 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
             AbstractHorseMixin.this.bh_syncGearFlags();
         }
     };
-    @Unique
     @Unique private static final int BH_CHEST_MAX_SLOTS = 54;
     @Unique private final SimpleContainer bh_chestContainer = new SimpleContainer(BH_CHEST_MAX_SLOTS);
     @Unique private static final int BH_CART_CHEST_SIZE = CartChestMenu.SLOTS;
