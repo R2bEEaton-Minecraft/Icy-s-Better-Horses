@@ -3,7 +3,7 @@ package icy.betterhorses.net.feature.breed;
 import icy.betterhorses.net.BhGears;
 import icy.betterhorses.net.IHorseData;
 import icy.betterhorses.net.entity.BhBreedAbilities;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
 public final class BhAbilityState {
 
@@ -38,3 +38,5 @@ public final class BhAbilityState {
         return (gear == 0 || gear == BhGears.TOP_GEAR) && movement.isRunningFlat();
     }
 }
+
+

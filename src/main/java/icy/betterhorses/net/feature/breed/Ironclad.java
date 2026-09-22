@@ -11,7 +11,7 @@ import icy.betterhorses.net.entity.BhBreedAbilities;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 
 public final class Ironclad implements BreedAbility {
@@ -48,7 +48,7 @@ public final class Ironclad implements BreedAbility {
         Player rider = up;
         if (rider != null && BhAbility.CLYDESDALE_RESIST.on()
                 && horse.getAttributeValue(Attributes.ARMOR) > 0.0D) {
-            BhBreedAbilities.applyQuietEffect(rider, MobEffects.RESISTANCE, SHIELD_DURATION, 0);
+            BhBreedAbilities.applyQuietEffect(rider, MobEffects.DAMAGE_RESISTANCE, SHIELD_DURATION, 0);
         }
     }
 
@@ -75,3 +75,5 @@ public final class Ironclad implements BreedAbility {
                 && BhAbility.CLYDESDALE_DEFLECT.on();
     }
 }
+
+

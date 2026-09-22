@@ -9,7 +9,7 @@ import icy.betterhorses.net.feature.breed.BhAbilityState;
 import icy.betterhorses.net.feature.breed.BreedAbility;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
@@ -83,9 +83,11 @@ public final class BreedAbilities implements HorseFeature {
             ItemStack stack = chest.getItem(i);
             if (!stack.isEmpty()) {
                 chest.setItem(i, ItemStack.EMPTY);
-                horse.spawnAtLocation(level, stack);
+                horse.spawnAtLocation(stack);
             }
         }
         chest.setChanged();
     }
 }
+
+

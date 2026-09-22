@@ -8,7 +8,7 @@ import icy.betterhorses.net.IHorseData;
 import icy.betterhorses.net.entity.BhBreedAbilities;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
 public final class StandstillBurst implements BreedAbility {
 
@@ -78,3 +78,5 @@ public final class StandstillBurst implements BreedAbility {
                 BhHorseAttributes.Source.ABILITY, KEY);
     }
 }
+
+

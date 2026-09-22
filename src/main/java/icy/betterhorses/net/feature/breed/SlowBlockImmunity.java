@@ -7,7 +7,7 @@ import icy.betterhorses.net.IHorseData;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -55,3 +55,5 @@ public final class SlowBlockImmunity implements BreedAbility {
         };
     }
 }
+
+

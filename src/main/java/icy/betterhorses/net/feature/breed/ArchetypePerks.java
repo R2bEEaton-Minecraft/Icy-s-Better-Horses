@@ -8,18 +8,18 @@ import icy.betterhorses.net.IHorseData;
 import icy.betterhorses.net.IcysBetterHorses;
 import icy.betterhorses.net.entity.BhBreedAbilities;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Block;
 
 public final class ArchetypePerks {
 
     private static final TagKey<Block> ROAD = TagKey.create(Registries.BLOCK,
-            Identifier.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, "horse_road"));
+            ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.RESOURCE_NAMESPACE, "horse_road"));
 
     private static final String PATH_KEY = "path";
     private static final int PATH_INTERVAL = 10;
@@ -95,3 +95,5 @@ public final class ArchetypePerks {
                 BhHorseAttributes.Source.ARCHETYPE, PATH_KEY);
     }
 }
+
+

@@ -1,7 +1,7 @@
 package icy.betterhorses.net.feature.breed;
 
 import icy.betterhorses.net.IHorseData;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
 public interface BreedAbility {
 
@@ -9,3 +9,5 @@ public interface BreedAbility {
 
     default void onDetach(AbstractHorse horse, IHorseData data) {}
 }
+
+

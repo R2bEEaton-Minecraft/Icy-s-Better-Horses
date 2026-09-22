@@ -9,7 +9,7 @@ import icy.betterhorses.net.IHorseData;
 import icy.betterhorses.net.entity.BhBreedAbilities;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.animal.equine.AbstractHorse;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
@@ -80,3 +80,5 @@ public final class HardyNorthern implements BreedAbility {
                 && BhAbility.ICELANDIC_CLEAR.on();
     }
 }
+
+
