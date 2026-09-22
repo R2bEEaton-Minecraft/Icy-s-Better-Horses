@@ -7,13 +7,13 @@
     "minecraft:badlands",
     "minecraft:wooded_badlands",
     "minecraft:sparse_jungle",
-    "terralith:arid_highlands",
-    "terralith:brushland",
-    "terralith:hot_shrubland",
-    "terralith:rocky_shrubland",
-    "biomeswevegone:atacama_outback",
-    "biomeswevegone:firecracker_chaparral",
-    "biomeswevegone:rugged_badlands",
-    "biomeswevegone:skyris_vale"
+    { "id": "terralith:arid_highlands", "required": false },
+    { "id": "terralith:brushland", "required": false },
+    { "id": "terralith:hot_shrubland", "required": false },
+    { "id": "terralith:rocky_shrubland", "required": false },
+    { "id": "biomeswevegone:atacama_outback", "required": false },
+    { "id": "biomeswevegone:firecracker_chaparral", "required": false },
+    { "id": "biomeswevegone:rugged_badlands", "required": false },
+    { "id": "biomeswevegone:skyris_vale", "required": false }
   ]
 }

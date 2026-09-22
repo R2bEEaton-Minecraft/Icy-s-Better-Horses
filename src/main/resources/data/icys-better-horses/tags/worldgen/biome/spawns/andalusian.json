@@ -6,12 +6,12 @@
     "minecraft:flower_forest",
     "minecraft:plains",
     "minecraft:forest",
-    "terralith:blooming_valley",
-    "terralith:lavender_valley",
-    "terralith:sakura_grove",
-    "biomeswevegone:allium_shrubland",
-    "biomeswevegone:rose_fields",
-    "biomeswevegone:sakura_grove",
-    "biomeswevegone:temperate_grove"
+    { "id": "terralith:blooming_valley", "required": false },
+    { "id": "terralith:lavender_valley", "required": false },
+    { "id": "terralith:sakura_grove", "required": false },
+    { "id": "biomeswevegone:allium_shrubland", "required": false },
+    { "id": "biomeswevegone:rose_fields", "required": false },
+    { "id": "biomeswevegone:sakura_grove", "required": false },
+    { "id": "biomeswevegone:temperate_grove", "required": false }
   ]
 }

@@ -5,10 +5,10 @@
     "minecraft:forest",
     "minecraft:meadow",
     "minecraft:plains",
-    "terralith:forested_highlands",
-    "terralith:valley_clearing",
-    "biomeswevegone:aspen_boreal",
-    "biomeswevegone:coniferous_forest",
-    "biomeswevegone:prairie"
+    { "id": "terralith:forested_highlands", "required": false },
+    { "id": "terralith:valley_clearing", "required": false },
+    { "id": "biomeswevegone:aspen_boreal", "required": false },
+    { "id": "biomeswevegone:coniferous_forest", "required": false },
+    { "id": "biomeswevegone:prairie", "required": false }
   ]
 }

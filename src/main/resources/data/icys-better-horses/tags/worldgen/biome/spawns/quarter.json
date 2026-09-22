@@ -6,10 +6,10 @@
     "minecraft:savanna",
     "minecraft:savanna_plateau",
     "minecraft:windswept_savanna",
-    "terralith:fractured_savanna",
-    "terralith:savanna_slopes",
-    "biomeswevegone:araucaria_savanna",
-    "biomeswevegone:baobab_savanna",
-    "biomeswevegone:prairie"
+    { "id": "terralith:fractured_savanna", "required": false },
+    { "id": "terralith:savanna_slopes", "required": false },
+    { "id": "biomeswevegone:araucaria_savanna", "required": false },
+    { "id": "biomeswevegone:baobab_savanna", "required": false },
+    { "id": "biomeswevegone:prairie", "required": false }
   ]
 }

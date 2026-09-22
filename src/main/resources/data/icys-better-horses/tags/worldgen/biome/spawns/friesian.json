@@ -3,14 +3,14 @@
   "values": [
     "minecraft:dark_forest",
     "minecraft:forest",
-    "minecraft:pale_garden",
+    { "id": "minecraft:pale_garden", "required": false },
     "minecraft:old_growth_spruce_taiga",
     "minecraft:taiga",
-    "terralith:moonlight_grove",
-    "terralith:wintry_forest",
-    "biomeswevegone:black_forest",
-    "biomeswevegone:ebony_woods",
-    "biomeswevegone:forgotten_forest",
-    "biomeswevegone:overgrowth_woodlands"
+    { "id": "terralith:moonlight_grove", "required": false },
+    { "id": "terralith:wintry_forest", "required": false },
+    { "id": "biomeswevegone:black_forest", "required": false },
+    { "id": "biomeswevegone:ebony_woods", "required": false },
+    { "id": "biomeswevegone:forgotten_forest", "required": false },
+    { "id": "biomeswevegone:overgrowth_woodlands", "required": false }
   ]
 }

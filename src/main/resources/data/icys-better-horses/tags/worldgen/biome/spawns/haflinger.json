@@ -7,10 +7,10 @@
     "minecraft:frozen_peaks",
     "minecraft:jagged_peaks",
     "minecraft:stony_peaks",
-    "terralith:alpine_grove",
-    "terralith:alpine_highlands",
-    "terralith:emerald_peaks",
-    "biomeswevegone:howling_peaks",
-    "biomeswevegone:red_rock_peaks"
+    { "id": "terralith:alpine_grove", "required": false },
+    { "id": "terralith:alpine_highlands", "required": false },
+    { "id": "terralith:emerald_peaks", "required": false },
+    { "id": "biomeswevegone:howling_peaks", "required": false },
+    { "id": "biomeswevegone:red_rock_peaks", "required": false }
   ]
 }

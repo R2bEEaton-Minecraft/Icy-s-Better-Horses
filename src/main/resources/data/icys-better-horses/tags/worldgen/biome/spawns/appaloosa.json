@@ -5,11 +5,11 @@
     "minecraft:wooded_badlands",
     "minecraft:savanna_plateau",
     "minecraft:sunflower_plains",
-    "terralith:brushland",
-    "terralith:savanna_badlands",
-    "terralith:warped_mesa",
-    "biomeswevegone:prairie",
-    "biomeswevegone:rugged_badlands",
-    "biomeswevegone:sierra_badlands"
+    { "id": "terralith:brushland", "required": false },
+    { "id": "terralith:savanna_badlands", "required": false },
+    { "id": "terralith:warped_mesa", "required": false },
+    { "id": "biomeswevegone:prairie", "required": false },
+    { "id": "biomeswevegone:rugged_badlands", "required": false },
+    { "id": "biomeswevegone:sierra_badlands", "required": false }
   ]
 }

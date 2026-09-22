@@ -6,11 +6,11 @@
     "minecraft:forest",
     "minecraft:birch_forest",
     "minecraft:meadow",
-    "terralith:blooming_valley",
-    "terralith:valley_clearing",
-    "biomeswevegone:amaranth_grassland",
-    "biomeswevegone:orchard",
-    "biomeswevegone:prairie",
-    "biomeswevegone:temperate_grove"
+    { "id": "terralith:blooming_valley", "required": false },
+    { "id": "terralith:valley_clearing", "required": false },
+    { "id": "biomeswevegone:amaranth_grassland", "required": false },
+    { "id": "biomeswevegone:orchard", "required": false },
+    { "id": "biomeswevegone:prairie", "required": false },
+    { "id": "biomeswevegone:temperate_grove", "required": false }
   ]
 }

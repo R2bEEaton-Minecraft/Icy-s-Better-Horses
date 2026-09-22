@@ -5,11 +5,11 @@
     "minecraft:sunflower_plains",
     "minecraft:savanna",
     "minecraft:sparse_jungle",
-    "terralith:fractured_savanna",
-    "terralith:savanna_slopes",
-    "biomeswevegone:prairie",
-    "biomeswevegone:araucaria_savanna",
-    "biomeswevegone:baobab_savanna",
-    "biomeswevegone:coconino_meadow"
+    { "id": "terralith:fractured_savanna", "required": false },
+    { "id": "terralith:savanna_slopes", "required": false },
+    { "id": "biomeswevegone:prairie", "required": false },
+    { "id": "biomeswevegone:araucaria_savanna", "required": false },
+    { "id": "biomeswevegone:baobab_savanna", "required": false },
+    { "id": "biomeswevegone:coconino_meadow", "required": false }
   ]
 }

@@ -7,14 +7,14 @@
     "minecraft:savanna",
     "minecraft:savanna_plateau",
     "minecraft:windswept_savanna",
-    "terralith:ancient_sands",
-    "terralith:desert_oasis",
-    "terralith:desert_spires",
-    "terralith:gravel_desert",
-    "terralith:savanna_badlands",
-    "biomeswevegone:atacama_outback",
-    "biomeswevegone:mojave_desert",
-    "biomeswevegone:windswept_desert",
-    "biomeswevegone:red_rock_valley"
+    { "id": "terralith:ancient_sands", "required": false },
+    { "id": "terralith:desert_oasis", "required": false },
+    { "id": "terralith:desert_spires", "required": false },
+    { "id": "terralith:gravel_desert", "required": false },
+    { "id": "terralith:savanna_badlands", "required": false },
+    { "id": "biomeswevegone:atacama_outback", "required": false },
+    { "id": "biomeswevegone:mojave_desert", "required": false },
+    { "id": "biomeswevegone:windswept_desert", "required": false },
+    { "id": "biomeswevegone:red_rock_valley", "required": false }
   ]
 }
