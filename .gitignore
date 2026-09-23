@@ -12,3 +12,6 @@ blockbench/
 tools/
 *.bbmodel
 *.md
+
+# Client-supplied reference files for the nezira Fabric port (large zips, not for commit)
+port/

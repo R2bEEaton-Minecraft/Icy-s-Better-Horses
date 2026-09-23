@@ -302,6 +302,7 @@ public class IcysBetterHorses implements ModInitializer {
                 growHorseBond(server, tuning.bondAmount());
             }
             HorseTracker.tick(server.getTickCount());
+            BhHorseSpawner.tick(server);
             discardStaleHorses();
             applyPendingReleases();
         });

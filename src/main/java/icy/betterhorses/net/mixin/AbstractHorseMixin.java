@@ -114,6 +114,9 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
     @Shadow
     protected abstract void doPlayerRide(Player player);
 
+    @Shadow
+    public abstract void setStanding(boolean standing);
+
     @Unique
     private static final EntityDataAccessor<Integer> BH_BOND_SYNCED =
             SynchedEntityData.defineId(AbstractHorse.class, EntityDataSerializers.INT);
@@ -1357,6 +1360,11 @@ public abstract class AbstractHorseMixin extends Animal implements IHorseData, I
     @Override
     public void bh_ridePlayer(Player player) {
         this.doPlayerRide(player);
+    }
+
+    @Override
+    public void bh_clearStanding() {
+        this.setStanding(false);
     }
 
     @Redirect(

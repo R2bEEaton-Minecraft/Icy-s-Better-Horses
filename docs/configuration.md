@@ -46,6 +46,14 @@ The default file, abbreviated. The `abilities` block holds one entry for every c
     "spawn_group_max": 6,
     "spawn_probability_floor": 0.1
   },
+  "spawner": {
+    "enabled": "yes",
+    "check_interval_ticks": 100,
+    "chance": 0.5,
+    "min_distance": 32,
+    "max_distance": 48,
+    "max_horses_per_chunk": 1
+  },
   "abilities": {
     "class_abilities": "yes",
     "breed_abilities": "yes",
@@ -105,6 +113,21 @@ The two bond numbers are a pair. The default pair is "+1 per minute", which is 1
 
 {: .note }
 > Spawn settings are read when a world loads its biomes, so changing them needs a restart, not a `/reload`.
+
+## Spawner
+
+Horses also come from a small built-in spawner. It runs on the server, and it does not use the vanilla animal mob cap or spawn weights. That means other mods' animals in a big pack can't crowd horses out. It works like Cobblemon's spawner. On a timer, it picks one spot near each player, between a minimum and maximum distance away, in a horse biome. If that chunk has fewer than the allowed number of wild horses, it spawns one. This keeps horses coming back without piling up, and never right on top of the player.
+
+| Key | Default | What it does |
+|:---|:---:|:---|
+| `enabled` | `yes` | `no` turns the spawner off, leaving only the normal biome spawns |
+| `check_interval_ticks` | `100` | Ticks between spawn checks near each player (20 ticks is one second) |
+| `chance` | `0.5` | Chance that a check goes ahead (0 to 1) |
+| `min_distance` | `32` | Closest a horse can appear to a player, in blocks (16 blocks is one chunk) |
+| `max_distance` | `48` | Farthest a horse can appear from a player, in blocks |
+| `max_horses_per_chunk` | `1` | Most wild horses allowed in one chunk. Tamed, owned and named horses don't count |
+
+If `max_horses_per_chunk` is above `1`, a spawn can be a small herd. Herd size uses `spawn_group_min` and `spawn_group_max` from the tuning table above, cut down to fit the chunk. To get more horses, lower `check_interval_ticks` or raise `chance` or `max_horses_per_chunk`. To get fewer, do the opposite. These are read at startup, so restart the server after editing.
 
 ---
 

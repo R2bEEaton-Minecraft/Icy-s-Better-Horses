@@ -13,7 +13,7 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 
 public final class BhBiomeSpawns {
 
-    private static final TagKey<Biome> SPAWNS = TagKey.create(Registries.BIOME,
+    static final TagKey<Biome> SPAWNS = TagKey.create(Registries.BIOME,
             ResourceLocation.fromNamespaceAndPath(IcysBetterHorses.MOD_ID, "spawns_horses"));
 
     private BhBiomeSpawns() {}

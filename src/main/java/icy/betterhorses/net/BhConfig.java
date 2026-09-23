@@ -35,6 +35,13 @@ public final class BhConfig {
     private static final String KEY_GROUP_MIN = "spawn_group_min";
     private static final String KEY_GROUP_MAX = "spawn_group_max";
     private static final String KEY_SPAWN_FLOOR = "spawn_probability_floor";
+    private static final String KEY_SPAWNER = "spawner";
+    private static final String KEY_SPAWNER_ENABLED = "enabled";
+    private static final String KEY_SPAWNER_INTERVAL = "check_interval_ticks";
+    private static final String KEY_SPAWNER_CHANCE = "chance";
+    private static final String KEY_SPAWNER_MIN = "min_distance";
+    private static final String KEY_SPAWNER_MAX = "max_distance";
+    private static final String KEY_SPAWNER_PER_CHUNK = "max_horses_per_chunk";
 
     private static final Path CONFIG_PATH = FabricLoader.getInstance()
             .getConfigDir()
@@ -47,6 +54,7 @@ public final class BhConfig {
     private static final EnumMap<BhFeature, Boolean> features = new EnumMap<>(BhFeature.class);
     private static final EnumMap<BhAbility, Boolean> abilities = new EnumMap<>(BhAbility.class);
     private static BhTuning tuning = BhTuning.defaults();
+    private static BhSpawnerSettings spawner = BhSpawnerSettings.defaults();
     private static boolean classMaster = true;
     private static boolean breedMaster = true;
 
@@ -70,8 +78,13 @@ public final class BhConfig {
             abilities.put(ability, ability.fresh());
         }
         tuning = BhTuning.defaults();
+        spawner = BhSpawnerSettings.defaults();
         classMaster = true;
         breedMaster = true;
+    }
+
+    public static BhSpawnerSettings spawner() {
+        return spawner;
     }
 
     public static boolean featureEnabled(BhFeature feature) {
@@ -255,6 +268,19 @@ public final class BhConfig {
                         readInt(numbers, KEY_GROUP_MAX, fallback.groupMax()),
                         readDouble(numbers, KEY_SPAWN_FLOOR, fallback.spawnFloor())).clamped();
             }
+
+            needsRewrite |= !root.has(KEY_SPAWNER);
+            JsonObject spawnerSection = root.getAsJsonObject(KEY_SPAWNER);
+            BhSpawnerSettings spawnerFallback = BhSpawnerSettings.defaults();
+            if (spawnerSection != null) {
+                spawner = new BhSpawnerSettings(
+                        readToggle(spawnerSection, KEY_SPAWNER_ENABLED, spawnerFallback.enabled()),
+                        readInt(spawnerSection, KEY_SPAWNER_INTERVAL, spawnerFallback.checkIntervalTicks()),
+                        readDouble(spawnerSection, KEY_SPAWNER_CHANCE, spawnerFallback.chance()),
+                        readInt(spawnerSection, KEY_SPAWNER_MIN, spawnerFallback.minDistance()),
+                        readInt(spawnerSection, KEY_SPAWNER_MAX, spawnerFallback.maxDistance()),
+                        readInt(spawnerSection, KEY_SPAWNER_PER_CHUNK, spawnerFallback.maxPerChunk())).clamped();
+            }
         } catch (Exception exception) {
             reset();
             IcysBetterHorses.LOGGER.warn("Failed to load config from {}. Using defaults for this run; "
@@ -401,6 +427,15 @@ public final class BhConfig {
         numbers.addProperty(KEY_GROUP_MAX, mineTuning.groupMax());
         numbers.addProperty(KEY_SPAWN_FLOOR, mineTuning.spawnFloor());
         root.add(KEY_TUNING, numbers);
+
+        JsonObject spawnerSection = new JsonObject();
+        spawnerSection.addProperty(KEY_SPAWNER_ENABLED, yesNo(spawner.enabled()));
+        spawnerSection.addProperty(KEY_SPAWNER_INTERVAL, spawner.checkIntervalTicks());
+        spawnerSection.addProperty(KEY_SPAWNER_CHANCE, spawner.chance());
+        spawnerSection.addProperty(KEY_SPAWNER_MIN, spawner.minDistance());
+        spawnerSection.addProperty(KEY_SPAWNER_MAX, spawner.maxDistance());
+        spawnerSection.addProperty(KEY_SPAWNER_PER_CHUNK, spawner.maxPerChunk());
+        root.add(KEY_SPAWNER, spawnerSection);
 
         try {
             Files.createDirectories(CONFIG_PATH.getParent());

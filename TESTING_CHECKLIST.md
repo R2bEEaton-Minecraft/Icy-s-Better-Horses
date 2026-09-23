@@ -5,9 +5,9 @@ mods as the client before treating multiplayer checks as passed.
 
 ## 1. Before you start
 
-- [ ] Confirm the Mods screen lists **Icy's Better Horses**, Fabric API,
+- [x] Confirm the Mods screen lists **Icy's Better Horses**, Fabric API,
   GeckoLib, and Modonomicon.
-- [ ] Open **Options → Controls → Key Binds → Icy's Better Horses**. The
+- [x] Open **Options → Controls → Key Binds → Icy's Better Horses**. The
   default keys are below; change any that conflict with your own binds.
 
 | Action | Default key | What to expect |
@@ -38,12 +38,12 @@ all gear, and enough testing supplies.
 /give @s minecraft:name_tag 1
 ```
 
-- [ ] Tame the horse normally: hold an empty hand, right-click it to mount,
+- [x] Tame the horse normally: hold an empty hand, right-click it to mount,
   and repeat after each buck until hearts appear.
-- [ ] Give it a name with the Name Tag (rename it in an anvil first, then
+- [x] Give it a name with the Name Tag (rename it in an anvil first, then
   right-click the horse). Confirm the horse remains owned and receives the
   expected bond reward.
-- [ ] Feed a Golden Apple by holding it and right-clicking the tamed horse.
+- [x] Feed a Golden Apple by holding it and right-clicking the tamed horse.
 
 ## 3. Saddle and gear inventory
 
@@ -61,20 +61,20 @@ all gear, and enough testing supplies.
 | Medkit | Horse Medkit | Damage the horse below half health; it should consume the kit and heal/protect itself. |
 | Stabilizer | Horse Stabilizer **or** Horse Cart | Test safe descent, or cart behavior, separately. |
 
-- [ ] Confirm each slot rejects an unrelated item.
-- [ ] Confirm closing and reopening the inventory preserves every fitted item.
-- [ ] Remove each item once, then put it back, to confirm pickup and placement
+- [x] Confirm each slot rejects an unrelated item.
+- [x] Confirm closing and reopening the inventory preserves every fitted item.
+- [x] Remove each item once, then put it back, to confirm pickup and placement
   work without duplication or loss.
 
 ## 4. Equipment behavior
 
 ### Chest and Ender Chest
 
-- [ ] Fit a normal Chest, place a few items in the added horse storage, close
+- [x] Fit a normal Chest, place a few items in the added horse storage, close
   the inventory, reopen it, and verify the items remain.
-- [ ] Replace it with an Ender Chest and confirm the displayed inventory is
+- [x] Replace it with an Ender Chest and confirm the displayed inventory is
   your own Ender Chest inventory.
-- [ ] Remove the Ender Chest and confirm normal horse storage is no longer
+- [x] Remove the Ender Chest and confirm normal horse storage is no longer
   exposed.
 
 ### Hooves
@@ -86,10 +86,10 @@ all gear, and enough testing supplies.
 
 ### Medkit
 
-- [ ] Fit Horse Medkit and reduce the horse below half health with controlled
+- [x] Fit Horse Medkit and reduce the horse below half health with controlled
   damage (for example, a low-power weapon while in Creative testing).
-- [ ] Confirm the medkit slot empties and the horse gains its recovery effects.
-- [ ] Fit a second kit and repeat once; do not test lethal damage until normal
+- [x] Confirm the medkit slot empties and the horse gains its recovery effects.
+- [x] Fit a second kit and repeat once; do not test lethal damage until normal
   recovery has worked.
 
 ### Stabilizer
