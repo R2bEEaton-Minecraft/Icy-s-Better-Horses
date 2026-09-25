@@ -42,6 +42,7 @@ public final class BhConfig {
     private static final String KEY_SPAWNER_MIN = "min_distance";
     private static final String KEY_SPAWNER_MAX = "max_distance";
     private static final String KEY_SPAWNER_PER_CHUNK = "max_horses_per_chunk";
+    private static final String KEY_SPAWNER_NEAR_PLAYER = "max_horses_near_player";
 
     private static final Path CONFIG_PATH = FabricLoader.getInstance()
             .getConfigDir()
@@ -279,7 +280,8 @@ public final class BhConfig {
                         readDouble(spawnerSection, KEY_SPAWNER_CHANCE, spawnerFallback.chance()),
                         readInt(spawnerSection, KEY_SPAWNER_MIN, spawnerFallback.minDistance()),
                         readInt(spawnerSection, KEY_SPAWNER_MAX, spawnerFallback.maxDistance()),
-                        readInt(spawnerSection, KEY_SPAWNER_PER_CHUNK, spawnerFallback.maxPerChunk())).clamped();
+                        readInt(spawnerSection, KEY_SPAWNER_PER_CHUNK, spawnerFallback.maxPerChunk()),
+                        readInt(spawnerSection, KEY_SPAWNER_NEAR_PLAYER, spawnerFallback.maxNearPlayer())).clamped();
             }
         } catch (Exception exception) {
             reset();
@@ -435,6 +437,7 @@ public final class BhConfig {
         spawnerSection.addProperty(KEY_SPAWNER_MIN, spawner.minDistance());
         spawnerSection.addProperty(KEY_SPAWNER_MAX, spawner.maxDistance());
         spawnerSection.addProperty(KEY_SPAWNER_PER_CHUNK, spawner.maxPerChunk());
+        spawnerSection.addProperty(KEY_SPAWNER_NEAR_PLAYER, spawner.maxNearPlayer());
         root.add(KEY_SPAWNER, spawnerSection);
 
         try {

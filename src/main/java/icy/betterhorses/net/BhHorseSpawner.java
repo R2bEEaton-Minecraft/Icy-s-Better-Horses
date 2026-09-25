@@ -45,6 +45,11 @@ public final class BhHorseSpawner {
             return;
         }
 
+        int nearRoom = settings.maxNearPlayer() - countWildHorsesNear(level, center, settings.maxDistance());
+        if (nearRoom <= 0) {
+            return;
+        }
+
         double angle = random.nextDouble() * Math.PI * 2.0D;
         double distance = settings.minDistance()
                 + random.nextDouble() * (settings.maxDistance() - settings.minDistance());
@@ -64,7 +69,7 @@ public final class BhHorseSpawner {
 
         BhTuning tuning = BhConfig.tuning();
         int wanted = tuning.groupMin() + random.nextInt(tuning.groupMax() - tuning.groupMin() + 1);
-        int count = Math.min(wanted, room);
+        int count = Math.min(wanted, Math.min(room, nearRoom));
 
         SpawnGroupData groupData = null;
         int spawned = 0;
@@ -114,10 +119,18 @@ public final class BhHorseSpawner {
         return pos;
     }
 
+    private static int countWildHorsesNear(ServerLevel level, BlockPos center, int radius) {
+        AABB box = new AABB(center).inflate(radius, level.getHeight(), radius);
+        return level.getEntitiesOfClass(Horse.class, box, BhHorseSpawner::isWild).size();
+    }
+
+    private static boolean isWild(Horse horse) {
+        return !horse.isTamed() && !horse.hasCustomName() && !IHorseData.of(horse).bh_isOwned();
+    }
+
     private static int countWildHorses(ServerLevel level, ChunkPos chunk) {
         AABB column = new AABB(chunk.getMinBlockX(), level.getMinBuildHeight(), chunk.getMinBlockZ(),
                 chunk.getMaxBlockX() + 1, level.getMaxBuildHeight(), chunk.getMaxBlockZ() + 1);
-        return level.getEntitiesOfClass(Horse.class, column,
-                horse -> !horse.isTamed() && !horse.hasCustomName() && !IHorseData.of(horse).bh_isOwned()).size();
+        return level.getEntitiesOfClass(Horse.class, column, BhHorseSpawner::isWild).size();
     }
 }

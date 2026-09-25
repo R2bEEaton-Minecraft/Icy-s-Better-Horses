@@ -8,10 +8,11 @@ public record BhSpawnerSettings(
         double chance,
         int minDistance,
         int maxDistance,
-        int maxPerChunk) {
+        int maxPerChunk,
+        int maxNearPlayer) {
 
     public static BhSpawnerSettings defaults() {
-        return new BhSpawnerSettings(true, 100, 0.5D, 32, 48, 1);
+        return new BhSpawnerSettings(true, 100, 0.5D, 32, 48, 1, 8);
     }
 
     public BhSpawnerSettings clamped() {
@@ -22,6 +23,7 @@ public record BhSpawnerSettings(
                 Mth.clamp(chance, 0.0D, 1.0D),
                 min,
                 Mth.clamp(maxDistance, min, 512),
-                Mth.clamp(maxPerChunk, 1, 16));
+                Mth.clamp(maxPerChunk, 1, 16),
+                Mth.clamp(maxNearPlayer, 1, 256));
     }
 }
